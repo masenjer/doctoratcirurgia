@@ -1,0 +1,187 @@
+#ButtonTancaSessio
+{
+	border:0;
+	background:url(/img/PuntoRojo.png);
+	background-repeat:no-repeat;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;	
+	font-weight:bold;
+	color:#666;
+	cursor:pointer;
+	width:120px;
+	text-align:right;
+}
+
+.ButtonPlus
+{
+	border:0;
+	background:url(/img/plus.jpg);
+	background-repeat:no-repeat;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;	
+	font-weight:bold;
+	color:#FFF;
+	cursor:pointer;
+	width:32px;
+	height:32px;
+	text-align:right;
+}
+
+.ButtonX
+{
+	border:0;
+	background:url(/img/TancarForm.png); 
+	background-repeat:no-repeat;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;	
+	font-weight:bold;
+	color:#FFF;
+	cursor:pointer;
+	width:23px;
+	height:22px;
+	text-align:right;
+}
+
+#ButtonExit
+{
+	border:1px;
+	border-style:solid;
+	border-color:#666;
+	background:url(/img/MenuAdmin/ButtonExit.jpg);
+	cursor:pointer;
+	width:56px;
+	height:56px;
+}
+
+#ButtonColor
+{
+	border:1px;
+	border-style:solid;
+	border-color:#666;
+	background:url(/img/MenuAdmin/ButtonColor.jpg) no-repeat;
+	cursor:pointer;
+	width:56px;
+	height:56px;
+}
+
+#ButtonAbstracts
+{
+	border:1px;
+	border-style:solid;
+	border-color:#666;
+	background:url(/img/MenuAdmin/ButtonAbstracts.jpg);
+	cursor:pointer;
+	width:56px;
+	height:56px;
+}
+
+#ButtonPlus
+{
+	background:url(/img/plus.jpg);
+	cursor:pointer;
+	width:24px;
+	height:24px;
+	background-size:100% 100%;
+	border:none;
+}
+
+.PlusButton{
+	width:24px;
+	height:24px;
+	background:URL(/img/plus.jpg);
+	background-size:100% 100%;
+	border:none;
+	cursor:pointer;
+}
+
+.GUButton{
+	width:24px;
+	height:24px;
+	background:URL(/img/GU.jpg);
+	background-size:100% 100%;
+	border:none;
+	cursor:pointer;
+}
+
+.LinMenuDeleteButton{
+	width:24px;
+	height:24px;
+	background:URL(/img/delete.jpg);
+	background-size:100% 100%;
+	border:none;
+	cursor:pointer;
+}
+
+
+
+.LinMenuHyperlinksButton{
+	width:24px;
+	height:24px;
+	background:URL(/img/Hiperlink32.jpg);
+	background-size:100% 100%;
+	border:none;
+	cursor:pointer;
+}
+
+.OrdenML{
+	width:24px;
+	height:24px;
+	
+}
+
+.ButtonDelete
+{
+	border:none;
+	background:url(/img/delete.jpg);
+	cursor:pointer;
+	width:32px;
+	height:32px;
+}
+
+.ButtonSave32
+{
+	border:none;
+	background:url(/img/Save32.jpg);
+	cursor:pointer;
+	width:32px;
+	height:32px;
+}
+
+.ButtonRIGHT32
+{
+	border:none;
+	background:url(/img/Right32.jpg);
+	cursor:pointer;
+	width:32px;
+	height:32px;
+}
+
+
+.ButtonLEFT32
+{
+	border:none;
+	background:url(/img/Left32.jpg);
+	cursor:pointer;
+	width:32px;
+	height:32px;
+}
+
+
+
+#ButtonNoticiaGuarda
+{
+	width:209px;
+	height:29px;
+	border:0;
+	background:url(/img/ButtonNoticiaGuarda.png);
+	cursor:pointer;
+}
+
+#ButtonNoticiaElimina
+{
+	width:209px;
+	height:29px;
+	border:0;
+	background:url(/img/ButtonNoticiaElimina.png);
+	cursor:pointer;
+}

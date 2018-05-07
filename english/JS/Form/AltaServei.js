@@ -1,0 +1,4 @@
+MostraAltaServei()
+{
+	$("#DIVFitxaAltaServei").fadeIn();
+}

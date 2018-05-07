@@ -1,0 +1,120 @@
+/* CSS Document */
+
+
+/*-----------------------------------------Pestanyas admin */
+.PestanyaAdminSeleccionada{
+	background-color:#FFF;
+	-moz-border-radius: 10px 10px 0px 0px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 0px 0px;
+	/* para Opera */
+	border-radius: 10px 10px 0px 0px;
+	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	height:30px;
+	color:#900;
+	text-align:center;
+	vertical-align:middle;
+	padding-left:25px;	
+	padding-right:25px;
+	border:none;
+	font-weight:bold;
+} 
+
+.PestanyaAdmin{
+	background:#FFF;
+	-moz-border-radius: 10px 10px 0px 0px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 0px 0px;
+	/* para Opera */
+	border-radius: 10px 10px 0px 0px;
+	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	height:30px;
+	color:#900;
+	text-align:center;
+	vertical-align:middle;	
+	padding-left:25px;	
+	padding-right:25px;
+	border:1px solid #ddd;
+	
+	cursor:pointer;
+}
+
+
+.PestanyaAdmin:hover{
+	background-color:#159;
+	color:#fff;	
+}
+
+
+.CuerpoPestanyasAdmin{
+	background-color:#FFF;
+	-moz-border-radius: 0px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 0px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 0px 10px 10px 10px;
+}
+
+
+/*-----------------------------------------Pestanyas SubFichas */
+.PestanyaSeleccionada{
+	background-color:#efefef;
+	-moz-border-radius: 10px 10px 0px 0px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 0px 0px;
+	/* para Opera */
+	border-radius: 10px 10px 0px 0px;
+	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	height:30px;
+	color:#900;
+	text-align:center;
+	vertical-align:middle;
+	padding-left:25px;	
+	padding-right:25px;
+	border:none;
+	font-weight:bold;
+} 
+
+.Pestanya{
+	background:#ddd;
+	-moz-border-radius: 10px 10px 0px 0px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 0px 0px;
+	/* para Opera */
+	border-radius: 10px 10px 0px 0px;
+	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	height:30px;
+	color:#900;
+	text-align:center;
+	vertical-align:middle;	
+	padding-left:25px;	
+	padding-right:25px;
+	border:none;
+	
+	cursor:pointer;
+}
+
+
+.Pestanya:hover{
+	background-color:#a66;
+	color:#fff;	
+}
+
+
+.CuerpoPestanya{
+	padding:20px;
+	background-color:#efefef;
+	-moz-border-radius: 0px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 0px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 0px 10px 10px 10px;
+}
