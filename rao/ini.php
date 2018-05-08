@@ -5,17 +5,17 @@ session_start();
 if ($_SESSION["IdSite"]==0){
 
 	//Títol de l'aplicació
-	$titol_APP = "Máster universitario en investigación clínica aplicada en ciencias de la salud"; 
+	$titol_APP = "Doctorat en Cirurgia i Ciències Morfològiques"; 
 
 	//Descripció de l'aplicació
-	$descripcio_APP = "Formamos investigadores solventes capaces de gestar y de llevar a buen termino proyectos de investigación vinculados a su trayectoria clínica.";
+	$descripcio_APP = "Aquest programa de doctorat cerca que els doctorands puguin adquirir les competències necessàries com a investigadors en les diferents especialitats de l’àmbit quirúrgic, en el camp de l’anatomia i l’embriologia o en el de l’anatomia patològica, en els seus vessants estructural i molecular, dins del camp de les ciències de la salut.";
 
 	//Texto de la cabcera que te lleva a la home cuando pulsas encima
-	$cabecera_superior = "Máster universitario en investigación clínica aplicada en ciencias de la salud";
+	$cabecera_superior = "Doctorat en Cirurgia i Ciències Morfològiques";
 
 	//Text del carousel
-	$titol_carousel = "Máster universitario en investigación clínica aplicada en ciencias de la salud";
-	$desc_carousel = "";//"Facultat de medicina";
+	$titol_carousel = "Doctorat en Cirurgia i Ciències Morfològiques";
+	$desc_carousel = "Facultat de medicina";
 
 }elseif($_SESSION["IdSite"] == 1){
 		//Títol de l'aplicació
