@@ -159,6 +159,22 @@ LOCK TABLES `DirectoriCategoria` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Agenda`
+--
+
+DROP TABLE IF EXISTS `Agenda`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Agenda` (
+  `IdAgenda` int(11) NOT NULL AUTO_INCREMENT,
+  `Fecha` char(255) DEFAULT NULL,
+  `Hora` int(1) DEFAULT NULL,
+  `Descripcio` char(255) DEFAULT NULL,
+  `IdSite` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`IdAgenda`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+--
 -- Table structure for table `EnDirHome`
 --
 

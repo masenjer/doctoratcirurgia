@@ -7,7 +7,7 @@ if ($_SESSION["Edicio"]){
 
 
 	$id = mysqli_real_escape_string($mysqli,$_GET["id"]);
-	$op = mysqli_real_escape_string($mysqli,$_GET["op"]);
+	$op = $_GET["op"];
 	$orden = mysqli_real_escape_string($mysqli,$_GET["orden"]);
 
 	if ($op == 0)

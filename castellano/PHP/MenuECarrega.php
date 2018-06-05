@@ -39,7 +39,7 @@ echo '
 	  
 			
 	  	  
-    <span class="visible-xs visible-sm navbar-brand">Estructura docent</span>
+    <span class="visible-xs navbar-brand">'.$TitolCap.'</span>
     </div>
 
 

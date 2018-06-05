@@ -7,7 +7,7 @@ include($_SERVER['DOCUMENT_ROOT']."/rao/PonQuita.php");
 
 $id = mysqli_real_escape_string($mysqli,$_GET["id"]); 
 
-switch(mysqli_real_escape_string($mysqli,$_GET["op"]))
+switch($_GET["op"])
 {
 	case 1: 	$SQL = "SELECT Titol,Contingut, Tipus, IdCapMenu, IdSite FROM LinMenu WHERE IdLinMenu = " . $id;
 				break;
@@ -51,7 +51,7 @@ if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($m
  
 
 
-if (mysqli_real_escape_string($mysqli,$mysqli,$_GET["op"]) == "1")
+if ($_GET["op"] == "1")
 {
 	if ($Id != '84')
 	{
@@ -73,7 +73,7 @@ if (mysqli_real_escape_string($mysqli,$mysqli,$_GET["op"]) == "1")
 	}
 }
 
-echo $Titol ."|". $Contingut."|".$Ruta."|".$id.",".mysqli_real_escape_string($mysqli,$_GET["op"])."|".$IdCap."|".$Tipus;
+echo $Titol ."|". $Contingut."|".$Ruta."|".$id.",".$_GET["op"]."|".$IdCap."|".$Tipus;
 ?>
 
 <?php

@@ -40,6 +40,7 @@ $_SESSION["IdSite"] = 0;
 		MostraGestioNoticies(); 
 		MostraGestioDestacats();
 		MostraGestioEnDir();
+		MostraGestioAgenda();
 		MostraGestioContacte();
 	}
 	if ($_SESSION["Creacio"] == 1) MostraEliminar();

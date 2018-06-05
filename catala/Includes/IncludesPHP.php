@@ -14,6 +14,7 @@
 <?php include("DIVS/GestioNoticies.php");?>
 <?php include("DIVS/GestioDestacats.php");?>
 <?php include("DIVS/GestioEnDir.php");?>
+<?php include("DIVS/GestioAgenda.php");?>
 <?php include("DIVS/GestioContacte.php");?>
 <?php include("DIVS/MostraGU.php");?>
 <?php include("DIVS/MenuCapcalera.php");?>

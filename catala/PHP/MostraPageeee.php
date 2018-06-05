@@ -4,7 +4,7 @@ include($_SERVER['DOCUMENT_ROOT']."/rao/PonQuita.php");
 
 $id = mysqli_real_escape_string($mysqli,$_GET["id"]); 
 
-switch(mysqli_real_escape_string($mysqli,$_GET["op"]))
+switch($_GET["op"])
 {
 	case "1": 	$SQL = "SELECT Titol,Contingut FROM LinMD WHERE  IdLinMD = " . $id;
 				break;
