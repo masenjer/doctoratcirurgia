@@ -5,7 +5,6 @@ function MostraColumnaCentral()
 <div id="main" class="content">
     
     <div class="contingut width-adjust">
-        <h2>
         <h2  class="section-title margin-top " aria-level="2" role="heading">
             
             <span id="ButtonEditContingut" style="float:right; display:none;" class="glyphicon glyphicon-edit" aria-hidden="true" onClick="ButtonEditContingut()"></span>
@@ -13,7 +12,6 @@ function MostraColumnaCentral()
             
             <section id="DIVTitolPage"></section>
             
-        </h2>  
         </h2>       
         <DIV id="DIVContingutPage"></DIV>
         <DIV id="DIVEditaContingutPage" style="display:none;">

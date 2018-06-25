@@ -54,7 +54,7 @@ function CarregaPagina()
 		//HomeCarrega();
 	}
 
-	CarregaColorsWeb();
+	//CarregaColorsWeb();
 	//ComprovaSiLogin();
 }
 

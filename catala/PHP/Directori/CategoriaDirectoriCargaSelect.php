@@ -1,7 +1,7 @@
 <?php
 function CategoriaDirectoriCargaSelect($idCat, $Conn){
 	session_start();
-	include($Conn); 
+	include($_SERVER['DOCUMENT_ROOT']."/rao/rao_con.php");
 	
 	$resultado = array();
 	
@@ -18,7 +18,7 @@ function CategoriaDirectoriCargaSelect($idCat, $Conn){
 	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
 
-	$resultado[1] = '<option value=0"">----------------------------------</option>';
+	$resultado[1] = '<option value="0">----------------------------------</option>';
 	
 	 while ($row = $result->fetch_assoc())
 	{

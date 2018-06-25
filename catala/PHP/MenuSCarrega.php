@@ -102,7 +102,7 @@ if (!$direccion) $direccion = '#!/MS_'.$row["IdCapMenu"];
 
 echo  '
 		<li>
-			<a href="Directori.php">
+			<a href="directori.php">
 			Directori INc
 			</a>
 		</li>';

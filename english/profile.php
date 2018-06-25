@@ -6,13 +6,13 @@ $_SESSION["IdSite"] = 1;
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<?php include("Includes/IncludesPHPDirectori.php");?>
+<?php include("Includes/IncludesPHPdirectori.php");?>
 <head>
 
     	
 	<?php //include("PHP/ColorsCanviaGlobal.php");?>
 <?php include("Includes/IncludesCSS.php");?>
-<?php include("Includes/IncludesJSDirectori.php");?> 
+<?php include("Includes/IncludesJSdirectori.php");?> 
 
 <?php
 	//////Crea los metas title y description para el robot de google

@@ -7,7 +7,7 @@ header('Content-type: text/html; charset=utf-8');?>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<?php include("Includes/IncludesPHPDirectori.php");?>
+<?php include("Includes/IncludesPHPdirectori.php");?>
 <head>
 
     	
@@ -15,7 +15,7 @@ header('Content-type: text/html; charset=utf-8');?>
 <?php include("Includes/IncludesCSS.php");?>
 <title><?php echo $titol_APP; ?></title>
 <meta name="description" content=" <?php echo "descripcio_APP"; ?>" />      
-<?php include("Includes/IncludesJSDirectori.php");?> 
+<?php include("Includes/IncludesJSdirectori.php");?> 
 </head>
 
 

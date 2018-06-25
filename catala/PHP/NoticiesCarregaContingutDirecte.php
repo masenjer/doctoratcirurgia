@@ -17,6 +17,13 @@ session_start();
 	}
 
 	//echo '</h2></div>';
+
+
+	echo '<h2 class="section-title" aria-level="2" role="heading">
+	
+	Actualitat
+	
+</h2>';
 	
 
 
@@ -47,6 +54,13 @@ if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($m
 	$resultado = $resultado . '
 	
 		<article class="post">
+			<a class="embed-responsive embed-responsive-16by9" href="javascript:void(0);">
+			<img src="/imgNot/'.$_SESSION["IdSite"].'/'.$row["Image"].'" alt="'.$row["Titol"].'"> 
+			</a>
+
+			<h3 aria-level="3" role="heading">
+				<a href="javascript:void(0);">'.$row["Titol"].'</a> 
+			</h3>
 			'//<h3>'.Quita($row["Titol"]).'</h3>
 			.Quita($row["Cos"]).'
 		</article>

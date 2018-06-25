@@ -12,7 +12,7 @@ $idCat = mysqli_real_escape_string($mysqli,$_POST["IdCat"]);
 
 $cuenta = 0;
 
-$SQL = "SELECT COUNT(*) as Cuenta FROM Directori WHERE IdDirectoriCategoria = ".$idCat;
+$SQL = "SELECT COUNT(*) as Cuenta FROM Directori WHERE IdDirectoriCategoria1 = ".$idCat." or IdDirectoriCategoria2 = ".$idCat;
 if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
 

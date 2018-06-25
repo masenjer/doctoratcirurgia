@@ -1,10 +1,10 @@
 <?php
-function MostraDirectoriPrivat($txt, $Conn, $idC)
+function MostraDirectoriPrivat($txt, $idC, $idUD)
 {
 	header('Content-type: text/html; charset=utf-8');
 
 	session_start();
-	include($Conn); 
+	include($_SERVER['DOCUMENT_ROOT']."/rao/rao_con.php");
 	
 	$idCategoriaActual = 'inicializa';
 	
@@ -16,6 +16,7 @@ function MostraDirectoriPrivat($txt, $Conn, $idC)
 		case 2: $idioma = "_en";
 				break;					
 	}
+
 	
 	if ($txt)
 	{	
@@ -32,32 +33,51 @@ function MostraDirectoriPrivat($txt, $Conn, $idC)
 		$cond .= " (IdDirectoriCategoria1 = ".$idC." OR IdDirectoriCategoria2 = ".$idC.") ";
 	}
 	
-	$SQL = "SELECT D.*, DC.Titol".$idioma.", DC.IdDirectoriCategoria FROM Directori D 
+	if ($idUD){
+		if ($cond) $cond.=" AND ";
+		$cond .= " (IdUnitatDocent1 = ".$idUD." OR IdUnitatDocent2 = ".$idUD.") ";
+	}
+	
+	$SQL = "SELECT D.*, DC.Titol".$idioma.", DC.IdDirectoriCategoria, UD1.Titol".$idioma." as TUD1, UD2.Titol".$idioma." as TUD2, Tutor FROM Directori D 
 			LEFT JOIN DirectoriCategoria DC 
-			ON (DC.IdDirectoriCategoria = D.IdDirectoriCategoria1 OR  DC.IdDirectoriCategoria = D.IdDirectoriCategoria2) ";
+			ON (DC.IdDirectoriCategoria = D.IdDirectoriCategoria1 OR  DC.IdDirectoriCategoria = D.IdDirectoriCategoria2) 
+			LEFT JOIN UnitatDocent UD1 
+			ON UD1.IdUnitatDocent = D.IdUnitatDocent1 
+			LEFT JOIN UnitatDocent UD2 
+			ON UD2.IdUnitatDocent = D.IdUnitatDocent2 
+			";
 	
 	if ($cond) $SQL .= " WHERE ".$cond."";
 	
 	$SQL .= " ORDER BY DC.Orden, D.Cognoms, D.Nom ASC ";
-
 	
 	$resFin .= '
-		<table class="fuenteContingut">	';
+		<table>	';
 	
 	//$resFin .= $SQL;
 	
 	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
 	
 	 while ($row = $result->fetch_assoc())
-	{
-		if (!$idC || $idC == $row["IdDirectoriCategoria"]){
-			
+	{	
+		//echo "tutor:".$row["Tutor"].";";
+
+		$checked = ($row["Tutor"])?"checked":""; 
+
+		if (!$idC || $idC == $row["IdDirectoriCategoria"] || $idUD == $row["IdUnitatDocent"]){
+
 			$arrayCategoria1 = CategoriaDirectoriCargaSelect($row["IdDirectoriCategoria1"], $Conn);
 			$selectCategoria1 = $arrayCategoria1[1];
-	
+
 			$arrayCategoria2 = CategoriaDirectoriCargaSelect($row["IdDirectoriCategoria2"], $Conn);
 			$selectCategoria2 = $arrayCategoria2[1];
-	
+
+			$arrayUnitatDocent1 = UDDirectoriCargaSelect($row["IdUnitatDocent1"], $Conn);
+			$selectUnitatDocent1 = $arrayUnitatDocent1[1];
+
+			$arrayUnitatDocent2 = UDDirectoriCargaSelect($row["IdUnitatDocent2"], $Conn);
+			$selectUnitatDocent2 = $arrayUnitatDocent2[1];
+
 			if ($idCategoriaActual != $row["IdDirectoriCategoria"]){
 				$arrayCategoria = CategoriaDirectoriCargaSelect($row["IdDirectoriCategoria"], $Conn);
 				$titolCat = $arrayCategoria[0];
@@ -70,59 +90,84 @@ function MostraDirectoriPrivat($txt, $Conn, $idC)
 				
 				$idCategoriaActual = $row["IdDirectoriCategoria"];
 			}
+
+
 			
 			if ($row["Imatge"]) $IMG = '<img class="IMGFitxaDirectoriLlistat" src="../IMGDirectori/'.$row["Imatge"].'" style="width:100px;">';
 			else $IMG = "";
 			$resFin .='
 			<tr>
 				<td colspan="3" align="right">
-					<button class="fuenteContingut" onClick="EditaFitxaDirectoriPersonal('.$row["IdDirectori"].');">Editar dades de fitxa personal</button>
+					<button class="btn btn-secondary" onClick="EditaFitxaDirectoriPersonal('.$row["IdDirectori"].');">Editar dades de fitxa personal</button>
 				</td>
 			</tr>
 			<tr>
-				<td rowspan="7" style="padding-right:20px;">'.$IMG.'</td>
-				<td  style="padding-right:20px;">Nom i Cognoms:</td>
+				<td rowspan="10" style="padding-right:20px;">'.$IMG.'</td>
+				<td  style="padding-right:20px;">Nom :</td>
 				<td>
-					<input type="text" id="NomEditaDirectori'.$row["IdDirectori"].'_'.$row["IdDirectoriCategoria"].'" class="fuenteContingut"  value="'.$row["Nom"].'">
-					<input type="text" id="CognomsEditaDirectori'.$row["IdDirectori"].'_'.$row["IdDirectoriCategoria"].'" class="fuenteContingut"  value="'.$row["Cognoms"].'"> </td>
+					<input type="text" id="NomEditaDirectori'.$row["IdDirectori"].'" class="form-control"  value="'.$row["Nom"].'">
+					</td>
 			</tr>
 			<tr>
-				<td>Despatx:</td>
-				<td style="padding-right:5px;"><input type="text" id="DespatxEditaDirectori'.$row["IdDirectori"].'_'.$row["IdDirectoriCategoria"].'" class="fuenteContingut"  value="'.$row["Despatx"].'" style="width:100%;"></td>
-			</tr>
-			<tr>
-				<td>Ubicacio:</td>
-				<td style="padding-right:5px;"><input type="text" id="UbicacioEditaDirectori'.$row["IdDirectori"].'_'.$row["IdDirectoriCategoria"].'" class="fuenteContingut"  value="'.$row["Ubicacio"].'" style="width:100%;"></td>
-			</tr>
-			<tr>
-				<td>Tel&egrave;fon:</td>
-				<td style="padding-right:5px;"><input type="text" id="TelefonEditaDirectori'.$row["IdDirectori"].'_'.$row["IdDirectoriCategoria"].'" class="fuenteContingut"  value="'.$row["Telefon"].'" style="width:100%;"></td>
+				<td  style="padding-right:20px;">Cognoms:</td>
+				<td>
+					<input type="text" id="CognomsEditaDirectori'.$row["IdDirectori"].'" class="form-control"  value="'.$row["Cognoms"].'"> </td>
 			</tr>
 			<tr>
 				<td>Email:</td>
-				<td style="padding-right:5px;"><input type="text" id="EmailEditaDirectori'.$row["IdDirectori"].'_'.$row["IdDirectoriCategoria"].'" class="fuenteContingut"  value="'.$row["Email"].'" style="width:100%;"></a></td>
-			</tr>'.
+				<td style="padding-right:5px;"><input type="text" id="EmailEditaDirectori'.$row["IdDirectori"].'" class="form-control"  value="'.$row["Email"].'" style="width:100%;"></a></td>
+			</tr>
+			<tr>
+				<td>Àrea de coneixement 1:</td>
+				<td><select id="Categoria1EditaDirectori'.$row["IdDirectori"].'" class="form-control" style="width:100%;">'.$selectCategoria1.'</select></td>
+			</tr>
+			<tr>
+				<td>Àrea de coneixement 2:</td>
+				<td><select id="Categoria2EditaDirectori'.$row["IdDirectori"].'" class="form-control" style="width:100%;">'.$selectCategoria2.'</select></td>
+			</tr>
+			<tr>
+				<td>Especialitat (Català):</td>
+				<td style="padding-right:5px;"><input type="text" id="Especialitat_caEditaDirectori'.$row["IdDirectori"].'" class="form-control"  value="'.$row["Especialitat_ca"].'" style="width:100%;"></a></td>
+			</tr>
+			<tr>
+				<td>Especialitat (Castellano):</td>
+				<td style="padding-right:5px;"><input type="text" id="Especialitat_esEditaDirectori'.$row["IdDirectori"].'" class="form-control"  value="'.$row["Especialitat_es"].'" style="width:100%;"></a></td>
+			</tr>
+			<tr>
+				<td>Especialitat (English):</td>
+				<td style="padding-right:5px;"><input type="text" id="Especialitat_enEditaDirectori'.$row["IdDirectori"].'" class="form-control"  value="'.$row["Especialitat_en"].'" style="width:100%;"></a></td>
+			</tr>
+
+'.
 	/*		<tr>
 				<td style="padding-bottom:10px">Substituir imatge:</td>
 				<td style="padding-bottom:10px">
 					<form  ENCTYPE="multipart/form-data" id="FormPujaEditaIMGDirectori'.$row["IdDirectori"].'" name="FormPujaEditaIMGDirectori'.$row["IdDirectori"].'" method="post" action="PHP/UploadFiles.php?op=1" target="IframePujaEditaIMGDirectori'.$row["IdDirectori"].'">
-						<input type="file" id="ImatgeEditaDirectori'.$row["IdDirectori"].'" name="ImatgeEditaDirectori'.$row["IdDirectori"].'" class="fuenteContingut" />
+						<input type="file" id="ImatgeEditaDirectori'.$row["IdDirectori"].'" name="ImatgeEditaDirectori'.$row["IdDirectori"].'" class="form-control" />
 					</form>
 					<iframe name="IframePujaEditaIMGDirectori'.$row["IdDirectori"].'" style="display:none"></iframe> 
 				</td>
 			</tr>
 	*/'
 			<tr>
-				<td>Categoria1:</td>
-				<td><select id="Categoria1EditaDirectori'.$row["IdDirectori"].'_'.$row["IdDirectoriCategoria"].'" class="fuenteContingut" style="width:100%;">'.$selectCategoria1.'</select></td>
+				<td>Unitat Docent 1:</td>
+				<td><select id="UD1EditaDirectori'.$row["IdDirectori"].'" class="form-control" style="width:100%;">'.$selectUnitatDocent1.'</select></td>
 			</tr>
 			<tr>
-				<td>Categoria2:</td>
-				<td><select id="Categoria2EditaDirectori'.$row["IdDirectori"].'_'.$row["IdDirectoriCategoria"].'" class="fuenteContingut" style="width:100%;">'.$selectCategoria2.'</select></td>
+				<td>Unitat Docent 2:</td>
+				<td><select id="UD2EditaDirectori'.$row["IdDirectori"].'" class="form-control" style="width:100%;">'.$selectUnitatDocent2.'</select></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<div class="custom-control custom-checkbox">
+					  <input type="checkbox" class="custom-control-input" id="tutor'.$row["IdDirectori"].'" '.$checked.'>
+					  <label class="custom-control-label" for="tutor'.$row["IdDirectori"].'">és tutor</label>
+					</div>
 			</tr>
 			<tr>
 				<td colspan="3" align="right">
-					<button class="fuenteContingut" onclick="DirectoriUpdate(\''.$row["IdDirectori"].'_'.$row["IdDirectoriCategoria"].'\')">Guardar els canvis al registre</button><button class="fuenteContingut" onclick="MostraDirectoriDelete('.$row["IdDirectori"].')">Elimina registre</button>
+					<button class="btn btn-success" onclick="DirectoriUpdate(\''.$row["IdDirectori"].'\')">Guardar els canvis al registre</button><button class="btn btn-danger" onclick="MostraDirectoriDelete('.$row["IdDirectori"].')">Elimina registre</button>
 				</td>
 			</tr>
 			<tr>
@@ -142,6 +187,9 @@ function MostraDirectoriPrivat($txt, $Conn, $idC)
 	
 	$resFin .= ComptadorResultatsDirectori($num_filas);
 	
+
 	return ($resFin);
+
 }
 ?>
+

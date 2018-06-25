@@ -45,13 +45,13 @@ $(document).ready(function(){
 		
 		MenuNoticiesCarregaHistoric();
 		MenuNoticiesCarregaActiu();
-		MenuDestacatCarrega();
-		MenuEnDirCarrega();
+		//MenuDestacatCarrega();
+		//MenuEnDirCarrega();
 		CargaNoticias('');	
 		CarregaGridGU();
 		InicialitzaUserGU();
-		AnadirDestacado();
-		AnadirEnDir(); 
+		//AnadirDestacado();
+		//AnadirEnDir(); 
 		
 		//CompruebaSiMenuGU();
 			

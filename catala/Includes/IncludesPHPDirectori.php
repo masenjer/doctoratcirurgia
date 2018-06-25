@@ -33,8 +33,10 @@
 
 
 <?php include("PHP/Directori/CategoriaDirectoriCargaSelect.php"); ?>
+<?php include("PHP/Directori/CategoriaUnitatDocentCargaSelect.php"); ?>
 <?php include("PHP/Directori/DirectoriCercadorPrivat.php");  ?>
 <?php include("PHP/Directori/DirectoriCercadorPublic.php");  ?>
 <?php include("PHP/Directori/DirectoriComptadorResultats.php"); ?> 
 
 <?php include("PHP/Directori/DirectoriFitxaCarregaDades.php"); ?> 
+

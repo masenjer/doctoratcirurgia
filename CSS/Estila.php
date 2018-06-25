@@ -1347,7 +1347,63 @@ body {
 	margin-right:10px;
 }
 
+/* Directori */
 
+
+.TitolCategoria{
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: <?php echo $color ?>;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.card > .subcard{
+	min-height:334px;
+}
+.card > .subcard > h1 > a{
+	font-size:20px;
+}
+
+.card > .subcard > p.title {
+  color: grey;
+  font-size: 16px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: rgba(<?php echo $colorRGB; ?>, 0.4);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+
+
+.card button:hover {
+  background-color: rgba(<?php echo $colorRGB; ?>, 1);
+}
+
+/* Directori*/
 
 
 

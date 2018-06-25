@@ -40,7 +40,7 @@ function MostraGestioAgenda()
 function CarregaDIVAgenda()
 {
 ?>
-<table width="100%" height="100%"  cellpadding="0" cellspacing="0" border="0" align="center" class="fuenteGestionNoticia">
+<table width="100%" height="100%"  cellpadding="0" cellspacing="0" border="0" align="center" >
 	<tr valign="top">
     	<td background="/img/GrisTrans.png" width="220px" valign="top"><?php CarregaDIVAgendaEsq(); ?></td>
         <td width="2px" bgcolor="#7e7e7e"></td>
@@ -61,24 +61,29 @@ function CarregaDIVAgendaEsq()
     	<td height="25px"></td>
     </tr>
     <tr>
-    	<td><input type="button" id="ButtonAgendaGuarda" onclick="AnadirAgenda();"></td>
+    	<td><input type="button" id="ButtonAgendaGuarda" onclick="AnadirAgenda();" value="Afegir nou registre a l'agenda" class="btn btn-success"></td>
     </tr>    
     <tr>
-    	<td align="center"><input type="button" id="ButtonAgendaElimina" onclick="MostraDIVAgendaElimina();"><?php ConfirmaEliminaAgenda(); ?></td>
+    	<td><input type="button" id="ButtonAgendaElimina" onclick="MostraDIVAgendaElimina();" value="Eliminar registre d'agenda seleccionat" class="btn btn-danger"><?php ConfirmaEliminaAgenda(); ?></td>
     </tr>
     <tr valign="top">
     	<td height="20px" align="center"></td>
     </tr>
     <tr valign="top">
     	<td>
-        	<table cellpadding="0" cellspacing="0" border="0">
+        	<table width="100%" cellpadding="0" cellspacing="0" border="0">
             	<tr valign="top">
-                    <td background="/img/CabHistoricoAgenda.png" width="209px" height="29px"></td>
+                    <td align="center" style="background:#222; color: #FFF" width="100%" height="29px"><h3>Registres agenda</h3></td>
                 </tr>
                 <tr valign="top">
                     <td height="200px">
                         <div id="ContListAgenda"  style="height:300px; overflow-y:auto"></div>
                     </td>
+                </tr>
+                <tr>
+                    <td>            
+                        <input type="button" value="Sortir del Gestor d'Agenda" onClick="TancaGestorAgenda();" class="btn" >
+</td>
                 </tr>
             </table>
         </td>
@@ -93,7 +98,7 @@ function CarregaDIVAgendaEsq()
 function CarregaDIVAgendaDret()
 {
 ?>
-<table width="100%" cellpadding="0" cellspacing="6" border="0" align="center" class="fuenteGestionNoticia"> 
+<table width="100%" class="table table-borderless" > 
 	<tr>
     	<td height="10px"></td>
     </tr>
@@ -103,30 +108,32 @@ function CarregaDIVAgendaDret()
     <tr>
     	<td height="20px"></td>
     </tr>
-    <tr>
-    	<td width="160px" align="left">T&iacute;tulo</td>
-        <td width="600px" align="left"><input id="TituloAgenda" type="text" class="fuenteGestionNoticia" style="width:98%"></td>
-    </tr>    
-    <tr>
-    	<td height="20px"></td>
-    </tr>
+   
     <tr>
         <td width="160px" align="left">Fecha</td>
-        <td width="600px" align="left"><input id="FechaAgenda" type="date" class="fuenteGestionNoticia" style="width:98%"></td>
+        <td width="600px" align="left"><input id="FechaAgenda" type="date"  style="width:98%"></td>
     </tr> 
     <tr>
         <td width="160px" align="left">Hora</td>
-        <td width="600px" align="left"><input id="HoraAgenda" type="time" class="fuenteGestionNoticia" style="width:98%"></td>
+        <td width="600px" align="left"><input id="HoraAgenda" type="time"  style="width:98%"></td>
     </tr> 
     <tr>
-        <td width="160px" align="left">Descripción</td>
-        <td width="600px" align="left"><input id="DescripcionAgenda" type="text" class="fuenteGestionNoticia" style="width:98%"></td>
+        <td width="160px" align="left">Ubicació</td>
+        <td width="600px" align="left"><input id="UbicacioAgenda" type="text"  style="width:98%"></td>
+    </tr>    
+    <tr>
+        <td width="160px" align="left">Descripció</td>
+        <td width="600px" align="left"><input id="DescripcioAgenda" type="text"  style="width:98%"></td>
+    </tr>    
+    <tr>
+        <td width="160px" align="left">Enllaç</td>
+        <td width="600px" align="left"><input id="EnllacAgenda" type="text"  style="width:98%"></td>
     </tr>    
   
     <tr>
-    	<td colspan="2" align="right"> 
-        	<input type="button" value="Salir del Gestor de Enlaces Directos" onClick="TancaGestorAgenda();" class="fuenteGestionNoticia">
-        	<input type="button" id="ButtonSaveAgenda" value="Guardar" class="fuenteGestionNoticia" onclick="UpdateAgenda();">
+    	<td colspan="2" align="right" style="padding-top: 20px"> 
+            <input type="button" id="ButtonSaveAgenda" value="Guardar" class="btn btn-success" onclick="UpdateAgenda();">
+        	
         </td>
     </tr>
     <tr>

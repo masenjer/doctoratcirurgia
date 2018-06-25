@@ -29,3 +29,5 @@
     
     <link rel="stylesheet" type="text/css" href="/CSS/Pestanyas.css" title="styles1" media="screen" />
     <link rel="stylesheet" type="text/css" href="/CSS/style_i-FM.css" title="styles1" media="screen" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

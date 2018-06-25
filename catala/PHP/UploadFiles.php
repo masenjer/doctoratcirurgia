@@ -1,19 +1,21 @@
 <?php
-$op = $mysqli,$_GET["op"];
+session_start();
+
+$op = $_GET["op"];
 
 
 switch ($op)
 {
-	case 1: $destino = "../Images/"; 
+	case 1: $destino = $_SERVER['DOCUMENT_ROOT']."/Images/"; 
 			break;	
 					
-	case 2: $destino = "../ImgNot/"; 
+	case 2: $destino = $_SERVER['DOCUMENT_ROOT']."/imgNot/".$_SESSION["IdSite"]."/"; 
 			break;	
 					
-	case 3: $destino = "../ImgDes/"; 
+	case 3: $destino = $_SERVER['DOCUMENT_ROOT']."/ImgDes/"; 
 			break;	
 					
-	case 4: $destino = "../Documents/"; 
+	case 4: $destino = $_SERVER['DOCUMENT_ROOT']."/Documents/"; 
 			break;	
 					
 	case 5: $destino = "../DocsDROW/"; 

@@ -172,7 +172,7 @@ function FechasEImagenesNot()
 	<tr>
     	<td align="left" ><?php FechasNoticias(); ?></td>
         <td width="10px"></td>
-        <td><?php //ImagenNoticias(); ?></td>
+        <td><?php ImagenNoticias(); ?></td>
     </tr>
 </table>
 

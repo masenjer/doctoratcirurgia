@@ -1,5 +1,7 @@
 <?php
 
+
+
 error_reporting (5); 
 include($_SERVER['DOCUMENT_ROOT']."/rao/rao_con.php"); 
 
@@ -16,99 +18,133 @@ switch ($_SESSION["IdSite"]){
 			break;					
 }
 
+
+$idCap = mysqli_real_escape_string($mysqli,$_GET["n"]);
+
+$sub = false;
+
 $SQL = "SELECT * FROM DirectoriCategoria order by Orden";
 if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
 
-$resultado = '
-<table width="100%" cellspacing="0" cellpadding="0" border="0"  style="border-style:solid;border-width:1px;border-color:#dddddd">
-	<tr>
-		<td>
-			<table width="100%" cellpadding="0" cellspacing="0" border="0">
-				<tr valign="top">
-					<td id="fuenteTitolML" width="5px" class="fuenteTitolML"></td>
-					<td id="fuenteTitolML" align="left" valign="middle" height="35px" class="fuenteTitolML"> Categories </td>
-					<td id="fuenteTitolML" width="5px" class="fuenteTitolML" ></td>
-				</tr>
+echo '
+
+<div class=" menu-left">
+	<div class="navbar">
+
+
+
+  	<div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed ico" data-toggle="collapse" data-target="#navbar-sidebar" aria-expanded="false" aria-controls="navbar">
+	    <span class="ico hamburguer" aria-hidden="true"></span>
+        <span class="sr-only">Prem per desplegar el menú de  null</span>
+      </button>
+      
+	  
+			
+	  	  
+    <span class="visible-xs navbar-brand">Àrees de coneixement</span>
+    </div>
+
+
+<nav id="navbar-sidebar" class="navbar-collapse collapse sidebar-navbar-collapse" role="navigation">
+    	<nav id="nav-context" class="menu-content" role="navigation" aria-label="Menú principal"><!-- UAB2013/Responsive_WD/Common/CSElementDisplayLeftMenu_RWD 8-->
+
+			<div class="aside-nav-content">
+			    <div role="tab" id="id_1" class="title">
+					<a aria-controls="collapseC0" aria-expanded="true" href="#collapseC0" data-parent="#accordion" data-toggle="collapse" role="button">
+						Àrees de coneixement
+						<span class="ico down" aria-hidden="true"></span>
+				    </a>
 				
-			</table>
-			<table width="100%"  cellpadding="0" cellspacing="0" border="0" class="fuenteML" id="fuenteML">
-	
-	<tr valign="middle">
-		<td width="5px"></td>
-		<td class="fuenteML" style="padding-top:10px; text-align:left;" height="25px">
-			<a href = "Directori.php" style="text-decoration:none;" class="fuenteML"><div style="text-decoration:none;">Tots els registres</div></a>
-		</td>
-		<td width="5px"></td>
-	</tr>';
+				</div>
+					<div id="collapseC0" class="collapse in" role="tabpanel" aria-labelledby="id_1">
+						<ul>
+							<li  class="no-sub">
+								<a href = "directori.php" >
+									Tots els registres
+								</a>
+							</li>
+';
+
+while ($row = $result->fetch_assoc())
+	{
+		if ($_SESSION["Creacio"]=="1")
+		{
+			$accion = '
+
+				<div class="row eines">
+					<div class="col-md-3"></div>
+					
+					<div class="col-md-3">	
+						<h3>
+							<span class="glyphicon glyphicon-edit " aria-hidden="true" 	onClick="EditaTitolCategoriaDirectori('.$row["IdDirectoriCategoria"].')"></span>
+						</h3>		
+					</div>
+					<div class="col-md-3">	
+						<h3>
+							<span class="glyphicon  glyphicon-remove-sign " aria-hidden="true" 	onClick="MostraEliminaTOT(12,event,'.$row["IdDirectoriCategoria"].');"></span>
+						</h3>		
+					</div>
+					
+					<div class="col-md-3">	<input class="OrdenML" type="text" id="OrdenCategoriaDirectori'.$row["IdDirectoriCategoria"].'" value="'.$row["Orden"].'"  onKeyPress="submitenter(13,event,'.$row["IdDirectoriCategoria"].')"></td>
+					</div>
+				</div>
+		
+				<input type="hidden" id="tdCategoriaDirectoriAntic'.$row["IdDirectoriCategoria"].'" value="'.$row["Titol".$idioma].'">
+				<input type="hidden" id="tdCategoriaDirectorihrefAntic'.$row["IdDirectoriCategoria"].'" value="'.$row["Titol".$idioma].'_'.$row["IdDirectoriCategoria"].'">
+			';
+		}
+
+
+
+		
+		echo  '  
+			<li  class="no-sub">
+				<a id ="href_directori_'.$row["IdDirectoriCategoria"].'" href = "directori.php?Categoria='.$row["IdDirectoriCategoria"].'" >
+					<div id="tdCategoriaDirectori'.$row["IdDirectoriCategoria"].'"><div id="DIVTitolCategoriaDirectori'.$row["IdDirectoriCategoria"].'"style="text-decoration:none;">'.$row["Titol".$idioma].'</div></div>
+				</a>'.$accion.'
+			</li>';
+
+				
+
 			
 
-
- while ($row = $result->fetch_assoc())
-{
-	
-	$resultado = $resultado . '
-	<tr valign="middle">
-		<td width="5px"><input type="hidden" id="tdMenuCategoriaDirectoriAntic'.$row["IdDirectoriCategoria"].'" value="'.$row["Titol"].$idioma.'"></td>';
-		
-	
-	$resultado = $resultado . '
-		<td id="tdMenuCategoriaDirectori'.$row["IdDirectoriCategoria"].'" align="left" height="25px" class="fuenteML" style="padding-top:10px;">
-			<a href = "Directori.php?Categoria='.$row["IdDirectoriCategoria"].'" style="text-decoration:none;" class="fuenteML"><div id="DIVTitolCategoriaDirectori'.$row["IdDirectoriCategoria"].'"style="text-decoration:none;">'.$row["Titol".$idioma].'</div></a>
-		</td>';
-	
-	
-	$resultado = $resultado . '
-		<td width="5px"></td>';
-		
-	if ($_SESSION["Creacio"]=="1")
-	{
-		$resultado = $resultado . '<td align="right" width="42px">
-			<table cellpadding="0" cellspacing="0" border="0">
-				<tr>
-					<td><button class="EditButton" onClick="EditaTitolCategoriaDirectori('.$row["IdDirectoriCategoria"].')"/></td>
-					<td rowspan="2">
-						<input class="OrdenML" type="text" id="OrdenCategoriaDirectori'.$row["IdDirectoriCategoria"].'" value="'.$row["Orden"].'"  onKeyPress="submitenter(13,event,'.$row["IdDirectoriCategoria"].')"></td>						
-				</tr>
-				<tr>
-					<td><button class="LinMenuDeleteButton" onClick="MostraEliminaTOT(12,0,'.$row["IdDirectoriCategoria"].');"/></td>
-				</tr>
-			</table>			
-		</td>
-	</tr>';
 	}
-
-}
-
  
 
+	
 
-		
+
+if ($sub){
+			echo '</ul></li>';
+		}
+
+echo '					</ul>';
 if ($_SESSION["Creacio"]=="1")
 {
-	$resultado = $resultado . 
-	'	<tr>
-			<td height="8px"></td>
-		</tr>
-		<tr valign="bottom">
-			<td colspan="5" align="right">
-				<img id="ImageML" src="/img/TitolButton.jpg" onClick="NovaCategoriaDirectoriTitol()" title="Nou T&iacute;tol"><img id="ImageML" src="/img/plus.jpg" onClick="NovaCategoriaDirectori()" title="Nova Categoria">
-			</td>
-		</tr>';
+
+	
+	echo 
+	'	
+		<ul class>
+			<li class="text-center">
+				<h2><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" onClick="NovaCategoriaDirectori()"></span>
+</h2>
+				
+			</li>
+		</ul>';
 		
 }
+echo '
 
-$resultado = $resultado . 
-		'	
-		<tr>
-			<td height="20px"></td>
-		</tr>
+					</div>
+				</div>
+			</nav>	   
+	</nav>
+	</div>
+	</div>';
 
-	</table>
-		</td>
-	</tr>
-</table>
-';
-echo $resultado;
-?>
+
+
 

@@ -37,7 +37,7 @@ $resultado = '
 	<tr valign="middle">
 		<td width="5px"></td>
 		<td class="fuenteML" style="padding-top:10px; text-align:left;" height="25px">
-			<a href = "Directori.php" style="text-decoration:none;" class="fuenteML"><div style="text-decoration:none;">Tots els registres</div></a>
+			<a href = "directori.php" style="text-decoration:none;" class="fuenteML"><div style="text-decoration:none;">Tots els registres</div></a>
 		</td>
 		<td width="5px"></td>
 	</tr>';
@@ -54,7 +54,7 @@ $resultado = '
 	
 	$resultado = $resultado . '
 		<td id="tdMenuCategoriaDirectori'.$row["IdDirectoriCategoria"].'" align="left" height="25px" class="fuenteML" style="padding-top:10px;">
-			<a href = "Directori.php?Categoria='.$row["IdDirectoriCategoria"].'" style="text-decoration:none;" class="fuenteML"><div id="DIVTitolCategoriaDirectori'.$row["IdDirectoriCategoria"].'"style="text-decoration:none;">'.$row["Titol".$idioma].'</div></a>
+			<a href = "directori.php?Categoria='.$row["IdDirectoriCategoria"].'" style="text-decoration:none;" class="fuenteML"><div id="DIVTitolCategoriaDirectori'.$row["IdDirectoriCategoria"].'"style="text-decoration:none;">'.$row["Titol".$idioma].'</div></a>
 		</td>';
 	
 	

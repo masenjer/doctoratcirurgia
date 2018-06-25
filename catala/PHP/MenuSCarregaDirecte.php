@@ -26,10 +26,10 @@ if (!$result2 = $mysqli->query($SQL2))printf("Errormessage: %s\n", mysqli_error(
 
 while ($row2 = $result2->fetch_assoc())
 {
-	$direccion = '#!/'.$row2["Titol"].'_'.$row2["IdLinMenu"].'_1';
+	$direccion = 'index.php#!/'.$row2["Titol"].'_'.$row2["IdLinMenu"].'_1';
 }
 
-if (!$direccion) $direccion = '#!/MS_'.$row["IdCapMenu"];
+if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
  
 
 
@@ -108,7 +108,10 @@ if (!$direccion) $direccion = '#!/MS_'.$row["IdCapMenu"];
 
  
 
-
+echo  '
+		<li>
+			<a href="directori.php">Professors</a>
+		</li>';
 
 		
 		

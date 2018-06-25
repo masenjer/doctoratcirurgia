@@ -593,6 +593,23 @@ cursor:pointer;
 	background:url(/img/EliminarEnlace.png);
 	cursor:pointer;
 }
+#ButtonAgendaGuarda
+{
+	width:209px;
+	height:29px;
+	border:0;
+	background:url(/img/AnadirEnlace.png);
+	cursor:pointer;
+}
+
+#ButtonAgendaElimina
+{
+	width:209px;
+	height:29px;
+	border:0;
+	background:url(/img/EliminarEnlace.png);
+	cursor:pointer;
+}
 
 .TitolHome 
 {

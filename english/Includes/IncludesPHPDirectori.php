@@ -2,7 +2,7 @@
 <?php include("var/varGlobal.php");?>
 
 <?php include("DIVS/Aplicacio.php");?>
-<?php include("DIVS/AplicacioDirectori.php");?>
+<?php include("DIVS/Aplicaciodirectori.php");?>
 <?php include("DIVS/AplicacioDirectoriFitxa.php");?>
 <?php include("DIVS/MenuLateralAdmin.php");?>	
 <?php include("DIVS/MenuColor.php");?>	
@@ -24,7 +24,7 @@
 <?php include("DIVS/Email.php");?>
 <?php include("DIVS/IMGHome.php");?>
 
-<?php include("DIVS/Directori.php");?>
+<?php include("DIVS/directori.php");?>
 <?php include("DIVS/DirectoriFitxa.php");?>
 <?php include("DIVS/Publicacions.php");?>
 

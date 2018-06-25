@@ -46,7 +46,7 @@ function CarregaAplicacio()
            
               
                   
-                    <span class="header-title"><a href="#!/home"><?php echo $cabecera_superior; ?></a></span>
+                    <span class="header-title"><a href="index.php#!/home"><?php echo $cabecera_superior; ?></a></span>
                   
                
           
@@ -69,7 +69,7 @@ function CarregaAplicacio()
                     
                     
                         <div class="col-md-6 hidden-xs hidden-sm">
-                          <h1 class="page-title" role="heading" aria-level="1"><a href="#!/home"><?php echo $cabecera_superior; ?></a></h1>
+                          <h1 class="page-title" role="heading" aria-level="1"><a href="index.php#!/home"><?php echo $cabecera_superior; ?></a></h1>
                     
                     </div>
                 

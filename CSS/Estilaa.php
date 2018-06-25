@@ -958,3 +958,7 @@ input
 	overflow-y:auto;
 	aoverflow-x:none;
 }
+
+.borderless td, .borderless th {
+    border: none;
+}

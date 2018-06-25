@@ -14,12 +14,22 @@ if ($_SESSION["Edicio"]){
 	$u = Pon(mysqli_real_escape_string($mysqli,$_POST["u"]));
 	$t = Pon(mysqli_real_escape_string($mysqli,$_POST["t"]));
 	$e = Pon(mysqli_real_escape_string($mysqli,$_POST["e"]));
+	$es_ca = Pon(mysqli_real_escape_string($mysqli,$_POST["es_ca"]));
+	$es_es = Pon(mysqli_real_escape_string($mysqli,$_POST["es_es"]));
+	$es_en = Pon(mysqli_real_escape_string($mysqli,$_POST["es_en"]));
+	$Tesis = Pon(mysqli_real_escape_string($mysqli,$_POST["Tesis"]));
+	$Horari = Pon(mysqli_real_escape_string($mysqli,$_POST["Horari"]));
 	$cat1 = Pon(mysqli_real_escape_string($mysqli,$_POST["cat1"]));
-	$cat2 = Pon(mysqli_real_escape_string($mysqli,$_POST["cat2"]));
+	$cat2 =($_POST["cat2"])?Pon(mysqli_real_escape_string($mysqli,$_POST["cat2"])):"";
+	$ud1 = Pon(mysqli_real_escape_string($mysqli,$_POST["ud1"]));
+	$ud2 =($_POST["ud2"])?Pon(mysqli_real_escape_string($mysqli,$_POST["ud2"])):"";
 	$IMG = Pon(mysqli_real_escape_string($mysqli,$_POST["IMG"]));
-	$Carrec =  Pon(mysqli_real_escape_string($mysqli,$_POST["Carrec"]));
+	$Carrec_ca =  Pon(mysqli_real_escape_string($mysqli,$_POST["Carrec_ca"]));
+	$Carrec_es =  Pon(mysqli_real_escape_string($mysqli,$_POST["Carrec_es"]));
+	$Carrec_en =  Pon(mysqli_real_escape_string($mysqli,$_POST["Carrec_en"]));
 	$Adreca =  Pon(mysqli_real_escape_string($mysqli,$_POST["Adreca"]));
 	$Xarxes =  Pon(mysqli_real_escape_string($mysqli,$_POST["Xarxes"]));
+	$tutor =  Pon(mysqli_real_escape_string($mysqli,$_POST["tutor"]));
 
 	$condIMG = "";
 
@@ -42,31 +52,46 @@ if ($_SESSION["Edicio"]){
 
 		if ($d) $Despatx = " Despatx='".$d."',";
 		if ($u) $Ubicacio = " Ubicacio='".$u."', ";
-		if ($Carrec) $Carrec = " Carrec='".$Carrec."', ";
+		if ($t) $Telefon = " Telefon='".$t."', ";
+		if ($Horari) $Horari = " Horari='".$Horari."', ";
+		if ($Tesis) $Tesis = " Tesis='".$Tesis."', ";
+		if ($Carrec_ca) $Carrec_ca = " Carrec_ca='".$Carrec_ca."', ";
+		if ($Carrec_es) $Carrec_es = " Carrec_es='".$Carrec_es."', ";
+		if ($Carrec_en) $Carrec_en = " Carrec_en='".$Carrec_en."', ";
 		if ($Adreca) $Adreca = " Adreca='".$Adreca."', ";
 		if ($Xarxes) $Xarxes = " Xarxes='".$Xarxes."', ";
+		if ($cat2) $cat2 = " IdDirectoriCategoria2='".$cat2."', ";
+		if ($ud2) $ud2 = " IdUnitatDocent2='".$ud2."', ";
 
 		$SQL = "
 			UPDATE  Directori 
 			SET 	Nom='".$n."', 
-					Cognoms='".$c."',".
+					Cognoms='".$c."',
+					Especialitat_ca='".$es_ca."',
+					Especialitat_es='".$es_es."',
+					Especialitat_en='".$es_en."',".
 					$Despatx.
 					$Ubicacio.
-					$Carrec.
+					$Telefon.
+					$Tesis.
+					$Carrec_ca.
+					$Carrec_es.
+					$Carrec_en.
 					$Adreca.
+					$Horari.
 					$Xarxes." 
-					Ubicacio='".$u."', 
-					Telefon='".$t."', 
 					IdDirectoriCategoria1='".$cat1."', 
-					IdDirectoriCategoria2='".$cat2."', 
+					".$cat2." 
+					IdUnitatDocent1='".$ud1."',
+					Tutor='".$tutor."', 
+					".$ud2." 
 					Email='".$e."' 
 					".$condIMG." 
 			WHERE IdDirectori = ".$id;
 			
-			//echo $SQL;
+		//echo $SQL;
 
-	if ($result = mysql_query($SQL,$oConn)) echo $id."|".$IMG;
-	else die("Error:".mysql_error($oConn));
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
 }
 ?>

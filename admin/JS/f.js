@@ -74,6 +74,12 @@ function submitenter(tipus,e,valor)
 
 			case 13:	GuardaRangCategoriaDirectori(valor);
 						break;
+			
+			case 14:	GuardaTitolCategoriaUnitatDocent(valor);
+						break;
+
+			case 15:	GuardaRangCategoriaUnitatDocent(valor);
+						break;
 
 
 	    }
@@ -99,6 +105,9 @@ function submitenter(tipus,e,valor)
 						break;
 						
 			case 12:	CancelaTitolCategoriaDirectori(valor);
+						break;
+			
+			case 14:	CancelaTitolCategoriaUnitatDocent(valor);
 						break;
 
 		
@@ -597,6 +606,8 @@ function CopiaNomImatgeNoticia(IMG)
 
 function TancaGestorNoticies()
 {
+	location.reload();
+
 	NoticiesCarregaContingut();
 	NoticiesCarregaContingutHistoric();
 	$('#DIVGestioNoticies').fadeOut();
@@ -1374,19 +1385,6 @@ function MostraDIVEnDirElimina()
 }	
 
 
-function AnadirEnDir()
-{
-	//$("#TituloDestacado").val("");
-	$("#IdEnDir").val("");
-	$("#TituloEnDir").val("");	
-	$("#SelectTipoEnlaceEnDir").val("0");
-
-	MostraOpcionsTipoEnlaceDirecto();
-
-	CarregaSelectCapMenuEnDir();	
-
-}
-
 function EliminaEnDir()
 {
 	var id= $('#IdEnDir').val();
@@ -1422,6 +1420,127 @@ function TancaGestorEnDir()
 	CarregaMenuEnDirHome();
 	$('#DIVGestioEnDir').fadeOut();
 }
+
+
+////////////////////AGENDA
+
+
+function AnadirAgenda()
+{
+	$("#IdAgenda").val("");
+	$("#FechaAgenda").val("");
+	$("#HoraAgenda").val("");
+	$("#UbicacioAgenda").val("");
+	$("#DescripcioAgenda").val("");
+	$("#EnllacAgenda").val("");
+
+}
+
+
+function UpdateAgenda()
+{ 
+	var  id = $("#IdAgenda").val();
+	var fecha = $("#FechaAgenda").val();
+	var hora = $("#HoraAgenda").val();
+	var ubicacio = $("#UbicacioAgenda").val();
+	var descripcio = $("#DescripcioAgenda").val();
+	var enllac = $("#EnllacAgenda").val();
+
+	
+	$.get("PHP/AgendaSave.php",{id:id, fecha:fecha, hora:hora, ubicacio:ubicacio, descripcio:descripcio, enllac:enllac},LlegadaUpdateAgenda);
+}
+
+function LlegadaUpdateAgenda(data)
+{ 
+	if (!data) window.location.reload();
+
+	alert("Registro Guardado");
+	$("#IdAgenda").val(data);	
+	MenuAgendaCarrega(); 
+}
+
+function MenuAgendaCarrega()
+{
+	$.get("PHP/AgendaMenuCarrega.php",{},LlegadaMenuAgendaCarrega);
+}
+
+function LlegadaMenuAgendaCarrega(data)
+{
+	$('#ContListAgenda').html("");
+	$('#ContListAgenda').html(data);
+}
+
+function CargaAgendaFitxa(id)
+{
+	$('#DIVConfirmaEliminaAgenda').slideUp("slow");
+	$.get("PHP/AgendaCarregaFitxa.php",{id:id},LlegadaCargaAgendaFitxa);
+}
+
+function LlegadaCargaAgendaFitxa(data)
+{
+	var obj = JSON.parse(data);
+	
+	$("#IdAgenda").val(obj.id);
+	$("#FechaAgenda").val(obj.Fecha);
+	$("#HoraAgenda").val(obj.Hora);
+	$("#UbicacioAgenda").val(obj.Ubicacio);
+	$("#DescripcioAgenda").val(obj.Descripcio);
+	$("#EnllacAgenda").val(obj.Enllac);
+}
+
+
+function MostraDIVAgendaElimina()
+{	
+	if($('#IdAgenda').val() != "")
+	{
+		$('#DIVConfirmaEliminaAgenda').slideDown("slow");
+	}
+	else
+	{
+		alert("Has de seleccionar primero un Enlace Directo para eliminarlo");	
+	}
+}
+
+function EliminaAgenda()
+{
+	var id= $('#IdAgenda').val();
+	
+	if (id != "")
+	{	
+		$.get("PHP/AgendaElimina.php",{id:id},LlegadaEliminaAgenda);
+	}
+	else
+	{
+		alert("Has de seleccionar primero un enlace directo para eliminarlo");	
+	}
+}
+
+function LlegadaEliminaAgenda(data)
+{
+	if (!data) location.reload();
+	
+	MenuAgendaCarrega();
+	AnadirAgenda();
+	$('#DIVConfirmaEliminaAgenda').slideUp("slow");
+	
+}
+
+function AbreGestorAgenda()
+{
+	$('#VideoEnFicha').html('');
+	$("#DIVGestioAgenda").fadeIn("slow");	
+	MenuAgendaCarrega();
+}
+
+function TancaGestorAgenda()
+{
+	location.reload();
+	$('#DIVGestioAgenda').fadeOut();
+}
+	
+
+
+/////Agenda fin
 
 ///////////////////////////////////////////////////////Contacte
 
@@ -1556,6 +1675,9 @@ function MostraEliminaTOT(op,idC,idL)
 				break;	
 		
 		case 12: document.getElementById("ButtonEliminaTOT").onclick =  function (){DeleteCategoriaDirectori(idL);};
+				break;		
+		
+		case 14: document.getElementById("ButtonEliminaTOT").onclick =  function (){DeleteCategoriaUnitatDocent(idL);};
 				break;		
 	}
 

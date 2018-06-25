@@ -3,7 +3,7 @@
 <?php include("var/varGlobal.php");?>
 
 <?php include("DIVS/Aplicacio.php");?>
-<?php include("DIVS/AplicacioDirectori.php");?>
+<?php include("DIVS/Aplicaciodirectori.php");?>
 <?php include("DIVS/MenuColor.php");?>	
 <?php include("DIVS/ImatgesCapcalera.php");?>	
 <?php include("DIVS/ColumnaEsquerra.php");?>	

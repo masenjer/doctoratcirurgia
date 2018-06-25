@@ -142,14 +142,7 @@ function NewDirectori()
 
 function DirectoriDret(){
 ?>
-	<table>
-<!--    	<tr>
-        	<td><?php //include("PHP/DestacatMenuCarregaDirecte.php"); ?></td>
-        </tr>
--->        <tr>
-        	<td><div id="DIVCategoriesDirectori"><?php include("PHP/Directori/CategoriaDirectoriMenuCarregaDirecte.php"); ?></div></td>
-        </tr>
-    </table>
+	<?php include("PHP/Directori/CategoriaDirectoriMenuCarregaDirecte.php"); ?>
 <?php		
 }
 ?>

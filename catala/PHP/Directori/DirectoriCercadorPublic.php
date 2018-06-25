@@ -1,14 +1,14 @@
 <?php
-function MostraDirectoriPublic($txt, $Conn, $idC)
+function MostraDirectoriPublic($txt, $idC, $idUD)
 {	
 	header('Content-type: text/html; charset=utf-8');
 
 	session_start();
-	include($Conn); 
+	include($_SERVER['DOCUMENT_ROOT']."/rao/rao_con.php");
 	
 	$idCategoriaActual = 'inicializa';
 	
-	switch ($_SESSIOM["IdSite"]){
+	switch ($_SESSION["IdSite"]){
 		case 0: $idioma = "_ca";
 				break;
 		case 1: $idioma = "_es";
@@ -32,9 +32,19 @@ function MostraDirectoriPublic($txt, $Conn, $idC)
 		$cond .= " (IdDirectoriCategoria1 = ".$idC." OR IdDirectoriCategoria2 = ".$idC.") ";
 	}
 	
-	$SQL = "SELECT D.*, DC.Titol".$idioma.", DC.IdDirectoriCategoria FROM Directori D 
+	if ($idUD){
+		if ($cond) $cond.=" AND ";
+		$cond .= " (IdUnitatDocent1 = ".$idUD." OR IdUnitatDocent2 = ".$idUD.") ";
+	}
+	
+	$SQL = "SELECT D.*, DC.Titol".$idioma.", D.Tutor, DC.IdDirectoriCategoria, UD1.Titol".$idioma." as TUD1, UD2.Titol".$idioma." as TUD2 FROM Directori D 
 			LEFT JOIN DirectoriCategoria DC 
-			ON (DC.IdDirectoriCategoria = D.IdDirectoriCategoria1 OR  DC.IdDirectoriCategoria = D.IdDirectoriCategoria2) ";
+			ON (DC.IdDirectoriCategoria = D.IdDirectoriCategoria1 OR  DC.IdDirectoriCategoria = D.IdDirectoriCategoria2) 
+			LEFT JOIN UnitatDocent UD1 
+			ON UD1.IdUnitatDocent = D.IdUnitatDocent1 
+			LEFT JOIN UnitatDocent UD2 
+			ON UD2.IdUnitatDocent = D.IdUnitatDocent2 
+			";
 	
 	if ($cond) $SQL .= " WHERE ".$cond."";
 	
@@ -42,41 +52,31 @@ function MostraDirectoriPublic($txt, $Conn, $idC)
 	
 	
 	
-	$resFin .= '
-		<table  cellpadding="0" cellspacing="0" border="0" class="fuenteContingut">	';
+	$i = 0;
 	
 	//$resFin .= $SQL;
 	
 	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+
+
 	
 	 while ($row = $result->fetch_assoc())
 	{
+
+
 		if (!$idC || $idC == $row["IdDirectoriCategoria"]){
 			
-			$arrayCategoria1 = CategoriaDirectoriCargaSelect($row["IdDirectoriCategoria1"], $Conn);
-			$selectCategoria1 = $arrayCategoria1[1];
-	
-			$arrayCategoria2 = CategoriaDirectoriCargaSelect($row["IdDirectoriCategoria2"], $Conn);
-			$selectCategoria2 = $arrayCategoria2[1];
 	
 			if ($idCategoriaActual != $row["IdDirectoriCategoria"]){
-				$arrayCategoria = CategoriaDirectoriCargaSelect($row["IdDirectoriCategoria"], $Conn);
-				$titolCat = $arrayCategoria[0];
 				
 				$resFin .= '
-			<tr>
-				<td colspan="3" align="left" class="TitolCategoriaDirectori">'.$titolCat.'</td>
-			</tr>
-			<tr>
-				<td height="30px"></td>
-			</tr>	
-				';
+			<p class="TitolCategoria">'.$row["Titol".$idioma].'</p>';
 				$idCategoriaActual = $row["IdDirectoriCategoria"];
 			}
 
 			if ($row["Perfil"]||$row["Inves"]||$row["Publi"]){
 				$nom = '<a href="profile.php?id='.$row["IdDirectori"].'" class="NomLlistatDirectori">'.$row["Nom"].' '.$row["Cognoms"].'</a>';
-				$info = '<a href="profile.php?id='.$row["IdDirectori"].'" class="InfoLlistatDirectori">+ Informaci&oacute;</a>';	
+				$info = '<tr><td colspan="2"><a href="profile.php?id='.$row["IdDirectori"].'" class="InfoLlistatDirectori">+ Informaci&oacute;</a></td></tr>';	
 			}
 			else {
 				$nom = '<span class="NomLlistatDirectori">'.$row["Nom"].' '.$row["Cognoms"].'</span>';	
@@ -85,46 +85,55 @@ function MostraDirectoriPublic($txt, $Conn, $idC)
 			
 			if ($row["Imatge"]) $IMG = '<img class="IMGFitxaDirectoriLlistat" src="../IMGDirectori/'.$row["Imatge"].'" style="width:100px;" alt="'.$row["Nom"].' '.$row["Cognoms"].'" title="'.$row["Nom"].' '.$row["Cognoms"].'">';
 			else $IMG = "";
+			
+			if ($row["TUD2"]){
+				$UD = $row["TUD1"]."</br>".$row["TUD2"];
+			}else{
+				$UD = $row["TUD1"];	
+			}		
+			
+
+			$tutor_class = (!$row["Tutor"])?"tutor":""; 
+			
+			
 			$resFin .= '
-			<tr>
-				<td width="110px" rowspan="6">'.$IMG.'</td>
-				<td colspan="2">'.$nom.'</td>
-			</tr>
-			<tr>
-				<td colspan="2"><span class="CarrecLlistatDirectori">'.$row["Carrec"].'</span> </td>
-			</tr>
-			<tr>
-				<td>Despatx:</td>
-				<td>'.$row["Despatx"].'</td>
-			</tr>
-			<tr>
-				<td>Ubicaci&oacute;:</td>
-				<td>'.$row["Ubicacio"].'</td>
-			</tr>
-			<tr>
-				<td>Tel&egrave;fon:</td>
-				<td>'.$row["Telefon"].'</td>
-			</tr>
-			<tr valign="top">
-				<td>Email:</td>
-				<td><a href="mailto:'.$row["Email"].'">'.$row["Email"].'</a><div style="float:right">'.$info.'</div></td>
-			</tr>
-			<tr>
-				<td height="10px"></td>
-			</tr>
-			<tr>
-				<td colspan="3" style="padding-bottom:10px; border-top:1px solid #ddd;">
-			<tr>			
+			<div class="col-md-4 '.$tutor_class.'">
+
+				<div class="card">
+					<div class="subcard">
+					  '.$IMG.'
+					  <h1>'.$nom.'</h1>
+					  <p class="title">'.$row["Carrec".$idioma].'</p>
+					  <p>'.$row["Especialitat".$idioma].'</p>
+					  <p>'.$UD.'</p>
+					  <p><a href="mailto:'.$row["Email"].'">'.$row["Email"].'</a></p>
+					</div>	  
+				  <p><a href="profile.php?id='.$row["IdDirectori"].'"><button>+ Info</button></a></p>
+				</div>
+			</div>
 			';
 		}
+
+		$i++;
+		//PAra evitar espacios en blanco
+		if ($i==3){
+			$resFin .= '<div class="clearfix tutor"></div>'; 
+			$i=0;
+		}
+
+		
+
 	}
-	
+
+
 	$resFin .='
-		</table>|';
+		|';
 	
 	$num_filas =$result->num_rows;
 	
 	$resFin .= ComptadorResultatsDirectori($num_filas);
+
+
 	
 	return ($resFin);
 }

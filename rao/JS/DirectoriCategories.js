@@ -11,8 +11,7 @@ function NovaCategoriaDirectoriTitol()
 function LlegadaNovaCategoriaDirectori(data)
 {
 	//if (!data) window.location.reload();
-	MenuCategoriaDirectoriCarrega();
-	TancaEliminaTOT();
+	window.location.reload();
 }
 
 function DeleteCategoriaDirectori(IdCat){
@@ -29,17 +28,20 @@ function ConfirmaDeleteCategoria(data){
 
 function EditaTitolCategoriaDirectori(id)
 {
+	$("#href_directori_"+id).removeAttr("href");
+
+	document.getElementById("tdCategoriaDirectori"+id).ondblclick =  function (){};
 
 	var titol = $('#DIVTitolCategoriaDirectori'+id).html();
 
 	var accions = ' onKeyUp="submitenter(12,event,'+id+')"';
 	
-	$('#tdMenuCategoriaDirectori'+id).html('<input type="text" id="TextTitolCategoriaDirectori'+id+'" value="'+ titol +'" '+accions+' />');
+	$('#tdCategoriaDirectori'+id).html('<input type="text" id="TextTitolCategoriaDirectori'+id+'" value="'+ titol +'" '+accions+' />');
 }
 
 function CancelaTitolCategoriaDirectori(id)
 {
-	$('#DIVTitolCategoriaDirectori'+id).html($('#tdCategoriaDirectoriAntic'+id).val());
+	window.location.reload();
 }
 
 function GuardaTitolCategoriaDirectori(id)
