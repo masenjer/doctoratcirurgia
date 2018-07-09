@@ -41,7 +41,7 @@ $resultado = '<ul class="fitxa-llistat">';
 			$accion = ' href = "'.$row["URL"].'" '; 			
 		}
 		else {
-			$accion = ' href = "Documents/'.$row["URL"].'" ';
+			$accion = ' href = "/Documents/'.$row["URL"].'" ';
 			$target = "_blank";
 		}
 	}

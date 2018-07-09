@@ -15,7 +15,7 @@ $A = mysqli_real_escape_string($mysqli,$_POST["A"]);
 $A = Pon($A);
 $E = mysqli_real_escape_string($mysqli,$_POST["E"]);
 $U = mysqli_real_escape_string($mysqli,$_POST["U"]);
-$P = sha1(sha1(mysqli_real_escape_string($mysqli,$_POST["P"])));
+if ($_POST["P"]) $P = sha1(sha1(mysqli_real_escape_string($mysqli,$_POST["P"])));
 $R1 = mysqli_real_escape_string($mysqli,$_POST["R1"]);
 $R2 = mysqli_real_escape_string($mysqli,$_POST["R2"]);
 $R3 = mysqli_real_escape_string($mysqli,$_POST["R3"]);
@@ -40,12 +40,17 @@ if ($id == "")
 }
 else
 {
+
+	if ($P){
+		$P = "Password = '".$P."',";
+	}
+
 	$SQL = "UPDATE Users SET 
 				Nom = '$N',
 				Cognoms = '$A', 
 				Email = '$E', 
 				User = '$U', 
-				Password = '$P',
+				".$P."
 				Usuarios = $R1,
 				Creacio = $R2,
 				Edicio = $R3,
@@ -55,6 +60,6 @@ else
 
 }
 
-echo $SQL;
+//echo $SQL;
 }
 ?>

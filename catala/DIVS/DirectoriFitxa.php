@@ -248,7 +248,7 @@ function MostraEstructuraDirectoriFitxaPublic(){
 		<p>
 			<span class="DadesFitxaDirectori"><b>Ubicaci&oacute;</b></br>'.$row["Ubicacio"].'</span>
 		</p>
-		<div id="DIVXarxesDirectori"  class="form-control">'.$row["Xarxes"].'</div>
+		<div id="DIVXarxesDirectori" >'.$row["Xarxes"].'</div>
 	</div>
 		
 
@@ -259,19 +259,20 @@ function MostraEstructuraDirectoriFitxaPublic(){
 			<span class="h1" colspan="2"><?php echo $row["Nom"].' '.$row["Cognoms"];?></span> 
 		</p>
 		<p>
-			<span class="CarrecFitxaDirectori" colspan="2"><b><?php echo $row["Carrec"];?></b></span>
+			<span class="h3" colspan="2"><?php echo $row["Carrec".$idioma];?></span>
 		</p>
 		<p>
-			<span class="CarrecFitxaDirectori" colspan="2"><?php echo $row["TitolDC1"]; ?></span> 
+			<span class="h4" colspan="2"><?php echo $row["TitolDC1"]; ?></span> 
 		</p>
 
 		<?php if ($row["TitolDC2"]){?>
 			
 		<p>
-			<span class="CarrecFitxaDirectori" colspan="2"><?php echo $row["TitolDC2"]; ?></span> 
+			<span class="h4" colspan="2"><?php echo $row["TitolDC2"]; ?></span> 
 		</p>
 	<?php } ?>
-		<p>
+
+		<p style="padding-top: 20px;">
 			<span class="DadesFitxaDirectori"><b>Especialitat</b></br><?php echo $row["Especialitat".$idioma]; ?></span> 
 		</p>
 		

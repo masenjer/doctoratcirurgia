@@ -80,11 +80,7 @@ function CarregaDIVAgendaEsq()
                         <div id="ContListAgenda"  style="height:300px; overflow-y:auto"></div>
                     </td>
                 </tr>
-                <tr>
-                    <td>            
-                        <input type="button" value="Sortir del Gestor d'Agenda" onClick="TancaGestorAgenda();" class="btn" >
-</td>
-                </tr>
+                
             </table>
         </td>
     </tr>    
@@ -132,6 +128,8 @@ function CarregaDIVAgendaDret()
   
     <tr>
     	<td colspan="2" align="right" style="padding-top: 20px"> 
+                        <input type="button" value="Sortir del Gestor d'Agenda" onClick="TancaGestorAgenda();" class="btn" >
+
             <input type="button" id="ButtonSaveAgenda" value="Guardar" class="btn btn-success" onclick="UpdateAgenda();">
         	
         </td>

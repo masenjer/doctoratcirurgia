@@ -15,7 +15,7 @@ function MostraGU()
                 </tr>
                 <tr valign="middle">
                     <td width="11px" background="/img/MarcCEsq.png"></td>
-                    <td valign="middle" align="center" background="/img/BlancoTrans2.png">
+                    <td valign="middle" align="center" background="/img/BlancoTrans2.png" style="padding:10px;">
                     	<?php MostraFitxaGU(); ?>
                     </td>
                     <td width="11px" background="/img/MarcCDret.png"></td>
@@ -38,9 +38,9 @@ function MostraGU()
 function MostraFitxaGU()
 {
 ?>
-<table width="700px" cellpadding="0" cellspacing="8" border="0" class="fuenteContingut">
+<table width="700px" cellpadding="0" cellspacing="8" border="0" class="">
 	<tr>
-    	<td colspan="2" align="left"><b>Gestión de usuarios</b></td>
+    	<td colspan="2" align="left"><h2>Gestión de usuarios</h2></td>
     </tr>
     <tr>
     	<td height="5px"></td>
@@ -71,8 +71,8 @@ function MostraFitxaGU()
     	<td height="10px"></td>
     </tr>
     <tr>
-    	<td align="right"><input type="button" onclick="TancaGestioUserGU();" value="Cancelar" /></td>
-    	<td align="left"><input type="button" onclick="UpdateUserGU();" value="Guardar" /></td>
+    	<td align="right"><input type="button" onclick="TancaGestioUserGU();" value="Salir de gestor de usuarios" class="btn btn-secondary" /></td>
+    	<td align="left" style="padding-left: 20px;"><input type="button" onclick="UpdateUserGU();" value="Guardar" class="btn btn-success" /></td>
     </tr>    
     
 </table>
@@ -87,15 +87,15 @@ function MostraGUI()
 <table cellpadding="0" cellspacing="2" border="0">
 	<tr>
     	<td>Nombre</td>
-        <td><input type="text" id="Nombre"></td>
+        <td><input type="text" id="Nombre" class="form-control"></td>
     </tr>
 	<tr>
     	<td>Apellidos</td>
-        <td><input type="text" id="Apellidos"></td>
+        <td><input type="text" id="Apellidos" class="form-control"></td>
     </tr>
    	<tr>
     	<td>Email</td>
-        <td><input type="text" id="Email"></td>
+        <td><input type="text" id="Email" class="form-control"></td>
     </tr>
 
 </table>
@@ -110,15 +110,15 @@ function MostraGUD()
 <table cellpadding="0" cellspacing="2" border="0">
 	<tr>
     	<td>Usuario</td>
-        <td><input type="text" id="UsuarioGU"></td>
+        <td><input type="text" id="UsuarioGU" class="form-control"></td>
     </tr>
 	<tr>
     	<td>Password</td>
-        <td><input type="password" id="PasswordGU"></td>
+        <td><input type="password" id="PasswordGU" class="form-control"></td>
     </tr>
     <tr>
     	<td>Confirma Password</td>
-        <td><input type="password" id="Password2GU"></td>
+        <td><input type="password" id="Password2GU" class="form-control"></td>
     </tr>
 </table>
 <?php

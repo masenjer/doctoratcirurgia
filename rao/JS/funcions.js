@@ -41,9 +41,9 @@ function CarregaPagina()
 	CompruebaSiMenuGU();
 
 	
-	DefineCalendario('FechaNoticia');
-	DefineCalendario('FechaNoticiaIN');
-	DefineCalendario('FechaNoticiaOUT');
+	//DefineCalendario('FechaNoticia');
+	//DefineCalendario('FechaNoticiaIN');
+	//DefineCalendario('FechaNoticiaOUT');
 
 	//NoticiesCarregaContingut();
 	//NoticiesCarregaContingutHistoric();
@@ -54,7 +54,7 @@ function CarregaPagina()
 		//HomeCarrega();
 	}
 
-	//CarregaColorsWeb();
+	CarregaColorsWeb();
 	//ComprovaSiLogin();
 }
 
@@ -342,6 +342,7 @@ function CarregaEnllacIntern(URL)
 
 function TancaGestorEnDir()
 {
+	document.location.reload();
 	//CarregaVideo();
 	CarregaMenuEnDirHome();
 	$('#DIVGestioEnDir').fadeOut();

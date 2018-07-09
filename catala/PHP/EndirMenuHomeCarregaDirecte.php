@@ -13,7 +13,7 @@ $permiso="";
 $colsp = 5;
 
 echo '<h2 class="section-title" aria-level="2" role="heading">
-        Enllaços directes &nbsp;';
+        Darrers documents &nbsp;';
 
 if ($_SESSION["Noticias"]=="1")
 {	
@@ -43,7 +43,7 @@ echo '<ul class="fitxa-llistat">';
 			$accion = ' href = "'.$row["URL"].'" '; 			
 		}
 		else {
-			$accion = ' href = "Documents/'.$row["URL"].'" ';
+			$accion = ' href = "/Documents/'.$row["URL"].'" ';
 			$target = "_blank";
 		}
 	}

@@ -74,12 +74,6 @@ function submitenter(tipus,e,valor)
 
 			case 13:	GuardaRangCategoriaDirectori(valor);
 						break;
-			
-			case 14:	GuardaTitolCategoriaUnitatDocent(valor);
-						break;
-
-			case 15:	GuardaRangCategoriaUnitatDocent(valor);
-						break;
 
 
 	    }
@@ -105,9 +99,6 @@ function submitenter(tipus,e,valor)
 						break;
 						
 			case 12:	CancelaTitolCategoriaDirectori(valor);
-						break;
-			
-			case 14:	CancelaTitolCategoriaUnitatDocent(valor);
 						break;
 
 		
@@ -606,7 +597,7 @@ function CopiaNomImatgeNoticia(IMG)
 
 function TancaGestorNoticies()
 {
-	location.reload();
+		document.location.reload();
 
 	NoticiesCarregaContingut();
 	NoticiesCarregaContingutHistoric();
@@ -657,7 +648,7 @@ function MarcaLineaGrid(id)
 
 function CarregaUserGU(id)
 {
-	MarcaLineaGrid(id);
+	//MarcaLineaGrid(id);
 	$.get("PHP/CarregaUserGU.php",{id:id},LlegadaCarregaUserGU);	
 }
 
@@ -673,8 +664,10 @@ function LlegadaCarregaUserGU(data)
 	$("#Apellidos").val(cadena[1]);
 	$("#Email").val(cadena[2]);
 	$("#UsuarioGU").val(cadena[3]);
-	$("#PasswordGU").val(cadena[4]);
-	$("#Password2GU").val(cadena[4]);
+	//$("#PasswordGU").val(cadena[4]);
+	//$("#Password2GU").val(cadena[4]);
+	$("#PasswordGU").val("");
+	$("#Password2GU").val("");
 	
 	if (cadena[5] == 1)
 	{
@@ -749,7 +742,7 @@ function UpdateUserGU()
 	var A = $("#Apellidos").val();	
 	var E = $("#Email").val();	
 	var U = $("#UsuarioGU").val();	
-	var P = SHA1(($("#PasswordGU").val()));	
+	var P = ($("#PasswordGU").val())?SHA1(($("#PasswordGU").val())):"";	
 	var R1 = CompruebaSiChecked("CheckUsuario");	
 	var R2 = CompruebaSiChecked("CheckCreacion");
 	var R3 = CompruebaSiChecked("CheckEdicion");
@@ -757,7 +750,9 @@ function UpdateUserGU()
 	
 	if ( SHA1($("#PasswordGU").val()) ==  SHA1($("#Password2GU").val()))
 	{		
-		$.post("PHP/UserGUUpdate.php",{id:id,N:N,A:A,E:E,U:U,P:P,R1:R1,R2:R2,R3:R3,R4:R4},CarregaGridGU);
+		$.post("PHP/UserGUUpdate.php",{id:id,N:N,A:A,E:E,U:U,P:P,R1:R1,R2:R2,R3:R3,R4:R4},function (data){
+				alert("Registro guardado correctamente");
+				CarregaGridGU});
 	}
 	else
 	{
@@ -1385,6 +1380,19 @@ function MostraDIVEnDirElimina()
 }	
 
 
+function AnadirEnDir()
+{
+	//$("#TituloDestacado").val("");
+	$("#IdEnDir").val("");
+	$("#TituloEnDir").val("");	
+	$("#SelectTipoEnlaceEnDir").val("0");
+
+	MostraOpcionsTipoEnlaceDirecto();
+
+	CarregaSelectCapMenuEnDir();	
+
+}
+
 function EliminaEnDir()
 {
 	var id= $('#IdEnDir').val();
@@ -1417,10 +1425,11 @@ function AbreGestorEnDir()
 
 function TancaGestorEnDir()
 {
+		document.location.reload();
+
 	CarregaMenuEnDirHome();
 	$('#DIVGestioEnDir').fadeOut();
 }
-
 
 ////////////////////AGENDA
 
@@ -1675,9 +1684,6 @@ function MostraEliminaTOT(op,idC,idL)
 				break;	
 		
 		case 12: document.getElementById("ButtonEliminaTOT").onclick =  function (){DeleteCategoriaDirectori(idL);};
-				break;		
-		
-		case 14: document.getElementById("ButtonEliminaTOT").onclick =  function (){DeleteCategoriaUnitatDocent(idL);};
 				break;		
 	}
 

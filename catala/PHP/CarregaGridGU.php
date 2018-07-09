@@ -34,7 +34,7 @@ while ($row = $result->fetch_assoc())
 	
 	$resultado = $resultado.'
 		<tr>
-			<td id="GridGU'.$row["IdUser"].'" colspan="7" height="18px" '.$color.' onclick="CarregaUserGU('.$row["IdUser"].');" onmouseover="EncenLineaGrid('.$row["IdUser"].')" onmouseout="ApagaLineaGrid('.$row["IdUser"].');" style="cursor:pointer;">
+			<td id="GridGU'.$row["IdUser"].'" colspan="7" height="18px" '.$color.' onclick="CarregaUserGU('.$row["IdUser"].');" style="cursor:pointer;">
 				<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
 					<tr valign="middle">
 						<td width="1px" bgcolor="#bababa"></td>

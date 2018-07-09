@@ -1,7 +1,9 @@
 <?php
+session_start();
 include($_SERVER['DOCUMENT_ROOT']."/rao/rao_con.php");
 
 if ($_SESSION["Edicio"]){
+
 
 	$id = mysqli_real_escape_string($mysqli,$_GET["id"]);
 	$rang = mysqli_real_escape_string($mysqli,$_GET["rang"]);

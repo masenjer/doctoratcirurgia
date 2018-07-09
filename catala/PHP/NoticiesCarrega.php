@@ -14,7 +14,7 @@ if ($id != "")
 	{
 		$T = $row["Titol"];
 		$C = $row["Cos"];
-		$F = SelectFecha($row["FechaNot"]);
+		$F = $row["FechaNot"];
 		$FP = SelectFecha($row["FechaPub"]);
 		$FD = SelectFecha($row["FechaDesPub"]);
 		$IMG = $row["Image"];

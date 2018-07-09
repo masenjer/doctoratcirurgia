@@ -44,7 +44,7 @@ function CarregaDIVEnDir()
 	<tr valign="top">
     	<td background="/img/GrisTrans.png" width="220px" valign="top"><?php CarregaDIVEnDirEsq(); ?></td>
         <td width="2px" bgcolor="#7e7e7e"></td>
-        <td background="/img/BlancoTrans2.png" width="600px"><?php CarregaDIVEnDirDret(); ?></td>
+        <td background="/img/BlancoTrans2.png" width="600px" style="padding: 10px;"><?php CarregaDIVEnDirDret(); ?></td>
     </tr>
 </table>
 <?php
@@ -93,27 +93,24 @@ function CarregaDIVEnDirEsq()
 function CarregaDIVEnDirDret()
 {
 ?>
-<table width="100%" cellpadding="0" cellspacing="6" border="0" align="center" class="fuenteGestionNoticia"> 
+<table width="100%" cellpadding="6" cellspacing="6" border="0" align="center" class=""> 
 	<tr>
     	<td height="10px"></td>
     </tr>
     <tr>
-    	<td class="fuenteTituloGestionEnDir" colspan="2" align="center"> Gesti&oacute;n de Enlaces Directos</td>
+    	<td class="h2" colspan="2" align="center"> Gesti&oacute;n de Enlaces Directos</td>
     </tr>
     <tr>
     	<td height="20px"></td>
     </tr>
     <tr>
     	<td width="160px" align="left">T&iacute;tulo</td>
-        <td width="600px" align="left"><input id="TituloEnDir" type="text" class="fuenteGestionNoticia" style="width:98%"></td>
-    </tr>    
-    <tr>
-    	<td height="20px"></td>
-    </tr>
+        <td width="600px" align="left"><input id="TituloEnDir" type="text" class="form-control" style="width:98%"></td>
+    </tr>       
     
     <tr>
     	<td align="left">Tipo de enlace</td>
-        <td align="left"><select id="SelectTipoEnlaceEnDir" onchange="MostraOpcionsTipoEnlaceDirecto();">
+        <td align="left"><select id="SelectTipoEnlaceEnDir" onchange="MostraOpcionsTipoEnlaceDirecto();" class="form-control">
         		<option value="0">------------</option>
                 <option value="1">Interno</option>
                 <option value="2">Externo</option>
@@ -130,11 +127,13 @@ function CarregaDIVEnDirDret()
 			?>
         </td>
     </tr>    
-  
+  <tr>
+        <td height="10px"></td>
+    </tr>
     <tr>
-    	<td colspan="2" align="right"> 
-        	<input type="button" value="Salir del Gestor de Enlaces Directos" onClick="TancaGestorEnDir();" class="fuenteGestionNoticia">
-        	<input type="button" id="ButtonSaveEnDir" value="Guardar" class="fuenteGestionNoticia" onclick="UpdateEnDir();">
+    	<td colspan="2" align="right" > 
+        	<input type="button" value="Salir del Gestor de Enlaces Directos" onClick="TancaGestorEnDir();" class="btn btn-secondary">
+        	<input type="button" id="ButtonSaveEnDir" value="Guardar" class="btn btn-success" onclick="UpdateEnDir();">
         </td>
     </tr>
     <tr>
@@ -172,15 +171,15 @@ function MostraEnllacInternEnDir()
 <table>
 	<tr>
     	<td>Men&uacute; superior:</td>
-        <td><select id="EnllacCapMenuEnDir" onchange="CarregaSelectLinsMenuEnDir('','','');"></select></td>
+        <td><select id="EnllacCapMenuEnDir" onchange="CarregaSelectLinsMenuEnDir('','','');" class="form-control"></select></td>
     </tr>
     <tr>
     	<td>Men&uacute; izquierdo:</td>
-        <td><select id="EnllacLinMenuEnDir0" onchange="CreaCadenaSelectsEnDir(0);"></select></td>
+        <td><select id="EnllacLinMenuEnDir0" onchange="CreaCadenaSelectsEnDir(0);" class="form-control"></select></td>
     </tr>
     <tr>
     	<td>Men&uacute; derecho:</td>
-        <td><select id="EnllacLinMenuEnDir1" onchange="CreaCadenaSelectsEnDir(1);"></select></td>
+        <td><select id="EnllacLinMenuEnDir1" onchange="CreaCadenaSelectsEnDir(1);" class="form-control"></select></td>
     </tr>	
 </table>
 </div>
@@ -191,7 +190,7 @@ function MostraEnllacExternEnDir()
 {
 ?>
 <div id="DIVEnllacDir2" style="display:none;" align="left">
-URL: 	<input type="text" id="EllacExternEnDir"  style="width:300px"/>
+URL: 	<input type="text" id="EllacExternEnDir"  style="width:300px" class="form-control" />
 </div>
 <?php
 }
@@ -202,13 +201,14 @@ function MostraEnllacDocumentEnDir()
 <div id="DIVEnllacDir3" style="display:none;" align="left">
 <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
     <tr valign="top">
-        <td></td>
-        <td width="100px" align="right">
-            <input type="hidden" id="NomDocumentEnDir" />
+        
+        <td  align="right">
+            <input type="hidden" id="NomDocumentEnDir"  />
             <input type="hidden" id="NomDocumentEnDirAntic" />
               <form  ENCTYPE="multipart/form-data" id="FormPujaNomDocumentEnDir" name="FormPujaNomDocumentEnDir" method="post" action="PHP/UploadFiles.php?op=4"  target="IframePujaDocumentEnDir">
                   <label class="cabinet">
-                        <input type="file" id="DocumentEnDir" name="Imatge" onchange="CopiaNomDocumentEnDir(this.value)" class="file" />
+                        Selecciona un documento
+                        <input type="file" id="DocumentEnDir" name="Imatge" onchange="CopiaNomDocumentEnDir(this.value)" class="form-control" />
                   </label>
               </form>   
          </td>

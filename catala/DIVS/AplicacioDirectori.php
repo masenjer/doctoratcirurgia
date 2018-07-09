@@ -337,7 +337,21 @@ function NewDirectori()
 function DirectoriEsquerre(){
 ?>
     <div class="row">
-        <?php echo DirectoriDret(); ?>
+        <div class=" menu-right">
+
+            <aside class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Cerca al directori</strong>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <input type="search" class="form-control" id="CercadorDirectori"  onkeyup="DirectoriCercador();">
+                    </p>
+                    <div id="ComptadorResultatsDirectori"></div>
+                </div>
+                
+            </aside>
+        </div>
     </div>
     <div class="row">
         <div class="panel panel-default panel-body">
@@ -353,29 +367,26 @@ function DirectoriEsquerre(){
     <div class="row">
         <div id="DIVCategoriesDirectori"><?php include("PHP/Directori/CategoriaUnitatDocentMenuCarregaDirecte.php"); ?></div>
     </div>
+    <div class="row">
+        <div class=" menu-right">
+
+            <aside class="panel panel-danger">
+                <div class="panel-heading">
+                    <strong>Accés a l'Àrea privada</strong>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <input type="password" class="form-control" id="CercadorDirectori"  onkeyup="DirectoriCercador();">
+                    </p>
+                    <button id="LoginPass" name="LoginPass" class="form-control btn btn-danger">Accedir a l'area privada</button>
+                    
+                </div>
+                
+            </aside>
+        </div>
+    </div>
     
     
-<?php       
-}
-
-
-function DirectoriDret(){
-?>
-<div class=" menu-right">
-
-    <aside class="panel panel-default">
-        <div class="panel-heading">
-            <strong>Cerca al directori</strong>
-        </div>
-        <div class="panel-body">
-            <p>
-                <input type="search" class="form-control" id="CercadorDirectori"  onkeyup="DirectoriCercador();">
-            </p>
-            <div id="ComptadorResultatsDirectori"></div>
-        </div>
-        
-    </aside>
-</div>
 <?php       
 }
 ?>

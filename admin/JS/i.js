@@ -37,21 +37,21 @@ $(document).ready(function(){
 			$('#TAInfoContacte').ckeditor(config1);
 		}
 		
-		
+		/*
 		DefineCalendario('FechaNoticia');
 		DefineCalendario('FechaNoticiaIN');
 		DefineCalendario('FechaNoticiaOUT');
-	
+	*/
 		
 		MenuNoticiesCarregaHistoric();
 		MenuNoticiesCarregaActiu();
-		//MenuDestacatCarrega();
-		//MenuEnDirCarrega();
+		MenuDestacatCarrega();
+		MenuEnDirCarrega();
 		CargaNoticias('');	
 		CarregaGridGU();
 		InicialitzaUserGU();
-		//AnadirDestacado();
-		//AnadirEnDir(); 
+		AnadirDestacado();
+		AnadirEnDir(); 
 		
 		//CompruebaSiMenuGU();
 			

@@ -13,7 +13,7 @@ if (CS()&&$_SESSION["Noticias"])
 	$C = mysqli_real_escape_string($mysqli,$_POST["C"]);
 	$C = Pon($C);
 	$F = mysqli_real_escape_string($mysqli,$_POST["F"]);
-	$F = InsertFecha($F);
+	$F = $F;
 //	$FP = mysqli_real_escape_string($mysqli,$_POST["FP"]);
 //	$FP = InsertFecha($FP);
 //	$FD = mysqli_real_escape_string($mysqli,$_POST["FD"]);

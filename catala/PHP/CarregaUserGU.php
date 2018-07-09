@@ -12,7 +12,7 @@ while ($row = $result->fetch_assoc()){
 	$C = $row["Cognoms"];
 	$E= $row["Email"];
 	$U = $row["User"];
-	$P = $row["Password"];
+	//$P = $row["Password"];
 	$R1 = $row["Usuarios"];
 	$R2 = $row["Creacio"];
 	$R3 = $row["Edicio"];
@@ -22,6 +22,6 @@ while ($row = $result->fetch_assoc()){
 }
 
 
-echo $N."|".$C."|".$E."|".$U."|".$P."|".$R1."|".$R2."|".$R3."|".$R4."|".$id;
+echo $N."|".$C."|".$E."|".$U."|"./*$P*/"|".$R1."|".$R2."|".$R3."|".$R4."|".$id;
 
 ?>

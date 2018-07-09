@@ -16,7 +16,7 @@ function MostraGestioContacte()
                 </tr>
                 <tr>
                     <td width="11px" background="/img/MarcCEsq.png"></td>
-                    <td width="522px" height="400px" background="/img/BlancoTrans2.png">
+                    <td width="522px" height="400px" background="/img/BlancoTrans2.png" style="padding:10px;">
                     	<?php CarregaDIVContacte(); ?>
                     </td>
                     <td width="11px" background="/img/MarcCDret.png"></td>
@@ -47,7 +47,7 @@ function CarregaDIVContacte()
     	<td height="10px"></td>
     </tr>
     <tr>
-    	<td class="fuenteTituloGestionContacte" colspan="2" align="center"> Gesti&oacute;n de Contacto</td>
+    	<td class="h2" colspan="2" align="center"> Gesti&oacute;n de Contacto</td>
     </tr>
     <tr>
     	<td height="20px"></td>
@@ -56,7 +56,7 @@ function CarregaDIVContacte()
     	<td width="160px" align="left">T&iacute;tulo</td>
     </tr>
     <tr>
-        <td width="600px" align="left"><input id="TituloContacte" type="text" class="fuenteGestionNoticia" style="width:98%"></td>
+        <td width="600px" align="left"><input id="TituloContacte" type="text" class="form-control" style="width:98%"></td>
     </tr> 
     <tr>
     	<td align="left">Informaci&oacute;n</td>
@@ -68,18 +68,21 @@ function CarregaDIVContacte()
     	<td height="20px"></td>
     </tr>
     
+    <?php /*
     <tr>
     	<td colspan="2">
         	<?php 
-				MostraEnllacInternContacte();			
+				//MostraEnllacInternContacte();			
 			?>
         </td>
-    </tr>    
+    </tr>   
+
+    */?> 
   
     <tr>
     	<td colspan="2" align="right"> 
-        	<input type="button" value="Salir del Gestor de Contacto" onClick="TancaGestiocontacte();" class="fuenteGestionNoticia">
-        	<input type="button" id="ButtonSaveContacte" value="Guardar" class="fuenteGestionNoticia" onclick="UpdateContacteEdicio();">
+        	<input type="button" value="Salir del Gestor de Contacto" onClick="TancaGestiocontacte();" class="btn btn-secondary">
+        	<input type="button" id="ButtonSaveContacte" value="Guardar" class="btn btn-success" onclick="UpdateContacteEdicio();">
         </td>
     </tr>
     <tr>

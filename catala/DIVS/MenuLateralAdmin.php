@@ -14,7 +14,7 @@ function MostraMenuLateralDerecho()
 <?php
 }
 ?>
-            <span class="glyphicon glyphicon-eye-open" aria-hidden="true" onClick="MostraMenuColor();"></span>
+            <!--<span class="glyphicon glyphicon-eye-open" aria-hidden="true" onClick="MostraMenuColor();"></span>-->
             <span class="glyphicon glyphicon-off" aria-hidden="true" onClick="TancaSessio();"></span>
 
         </h3>

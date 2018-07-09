@@ -44,7 +44,7 @@ function CarregaDIVNoticies()
 	<tr>
     	<td background="/img/GrisTrans.png" width="220px" valign="top"><?php CarregaDIVNoticiesEsq(); ?></td>
         <td width="2px" bgcolor="#7e7e7e"></td>
-        <td background="/img/BlancoTrans2.png" width="600px"><?php CarregaDIVNoticiesDret(); ?></td>
+        <td background="/img/BlancoTrans2.png" width="600px" style="padding: 20px"><?php CarregaDIVNoticiesDret(); ?></td>
     </tr>
 </table>
 <?php
@@ -106,14 +106,14 @@ function CarregaDIVNoticiesDret()
 ?>
 <table width="100%" cellpadding="0" cellspacing="6" border="0" align="center" class="fuenteGestionNoticia"> 
     <tr>
-    	<td class="fuenteTituloGestionNoticias" colspan="2" align="center"> Gesti&oacute;n de noticias</td>
+    	<td class="h2" colspan="2" align="center"> Gesti&oacute;n de noticias</td>
     </tr>
     <tr>
     	<td height="20px"></td>
     </tr>
     <tr>
     	<td width="106px" align="left">T&iacute;tulo de la noticia</td>
-        <td align="left" style="padding-left:15px;"><input id="TituloNoticia" type="text" class="fuenteGestionNoticia" style="width:400px"></td>
+        <td align="left" style="padding-left:15px;"><input id="TituloNoticia" type="text" class="form-control" style="width:400px"></td>
     </tr>    
     <tr>
     	<td colspan="2"><?php FechasEImagenesNot();?></td>
@@ -128,16 +128,17 @@ function CarregaDIVNoticiesDret()
     <tr>
     	<td height="10px"></td>
     </tr>
-    <tr>
+    <!--<tr>
     	<td colspan="2" align="left"> <input type="checkbox" id="NouNoticia" />Incloure imatge <img src="/img/NOU.gif" /></td>
     </tr>
+-->
     <tr>
     	<td height="10px"></td>
     </tr>
     <tr>
     	<td colspan="2" align="right"> 
-        	<input type="button" value="Salir del gestor de noticias" onClick="TancaGestorNoticies();" class="fuenteGestionNoticia">
-        	<input type="button" id="ButtonSaveNoticia" value="Guardar" class="fuenteGestionNoticia" onclick="SaveNoticia();">
+        	<input type="button" value="Salir del gestor de noticias" onClick="TancaGestorNoticies();" class="btn btn-secondary">
+        	<input type="button" id="ButtonSaveNoticia" value="Guardar" class="btn btn-success" onclick="SaveNoticia();">
         </td>
     </tr>
     <tr>
@@ -186,7 +187,7 @@ function FechasNoticias()
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
 	<tr>
     	<td align="left">Fecha de la noticia</td>
-        <td height="22px" valign="bottom" align="left" style="padding-left:15px;"><input type="text" id="FechaNoticia" class="fuenteGestionNoticia"></td>
+        <td height="22px" valign="bottom" align="left" style="padding-left:15px;"><input type="date" id="FechaNoticia" class="form-control"></td>
     </tr>
 <!--    <tr>
     	<td align="left">Fecha Publicaci&oacute;n noticia</td>
@@ -197,6 +198,9 @@ function FechasNoticias()
         <td align="left"><input type="text" id="FechaNoticiaOUT" class="fuenteGestionNoticia"></td>
     </tr>
 --></table>
+
+
+
 
 
 <?php 
